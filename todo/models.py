@@ -1,10 +1,10 @@
 from django.db import models
 
 
-class item(models.Model):
+class Item(models.Model):
     '''Represents an item on a todo list, such as user, desc, etc.
     '''
-    title_text = models.CharField(max_length=200)
+    title_text = models.CharField(max_length=200, default="")
     desc_text = models.TextField()
     impact_text = models.TextField()
     add_date = models.DateTimeField('date added')
@@ -12,4 +12,7 @@ class item(models.Model):
     priority = models.FloatField()
 
     def __repr__(self):
-        return self.add_date
+        pass
+
+    def __str__(self):
+        return self.title_text
