@@ -10,6 +10,7 @@ class Item(models.Model):
     add_date = models.DateTimeField('date added')
     due_date = models.DateTimeField('complete by')
     priority = models.FloatField()
+    complete = models.BooleanField(default=False)
 
     def __repr__(self):
         pass
