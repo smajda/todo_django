@@ -1,0 +1,3 @@
+June 20, 2017 - Commit: 2d3ce74
+Added this text file to keep track of progress and what resources were used.
+Moved CSS/JS code to a dedicated file in static folder. 
