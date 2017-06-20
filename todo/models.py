@@ -9,7 +9,7 @@ class Item(models.Model):
     impact_text = models.TextField()
     add_date = models.DateTimeField('date added')
     due_date = models.DateTimeField('complete by')
-    priority = models.FloatField()
+    priority = models.FloatField(default='-1')
     complete = models.BooleanField(default=False)
 
     def __repr__(self):
