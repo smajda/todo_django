@@ -7,10 +7,11 @@ class Item(models.Model):
     title_text = models.CharField(max_length=200, default="")
     desc_text = models.TextField()
     impact_text = models.TextField()
-    add_date = models.DateTimeField('date added')
-    due_date = models.DateTimeField('complete by')
-    priority = models.FloatField(default='-1')
+    start_date = models.DateTimeField()
+    due_date = models.DateTimeField()
+    priority = models.FloatField()
     complete = models.BooleanField(default=False)
+    add_date = models.DateTimeField()
 
     def __repr__(self):
         pass

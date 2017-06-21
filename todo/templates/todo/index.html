@@ -24,10 +24,10 @@
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-md-7 form-group">
-                      <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" class="form-control form-control-lg" name = "title_text" placeholder = "Title">
+                      <input type="text" class="form-control form-control-lg" name = "title_text" placeholder = "Title">
                   </div>
                   <div class="col-md-2 form-group">
-                    <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" id = "add_date" class="form-control form-control-lg" name = "add_date" placeholder = "Today">
+                    <input type="text" id = "start_date" class="form-control form-control-lg" name = "add_date" placeholder = "Today">
                   </div>
                   <div class="col-md-2 form-group">
                     <input type="text" id = "due_date" class="form-control form-control-lg" name = "due_date" placeholder = "Due">
@@ -65,8 +65,8 @@
                     <th>Title</th>
                     <th>Desc</th>
                     <th>Impact</th>
-                    <th>Add</th>
-                    <th>Due</th>
+                    <th>Start Date</th>
+                    <th>Due Date</th>
                     <th>Priority</th>
                   </tr>
                 </thead>
@@ -76,7 +76,7 @@
                       <td>{{item.title_text}}</td>
                       <td>{{item.desc_text}}</td>
                       <td>{{item.impact_text}}</td>
-                      <td>{{item.add_date}}</td>
+                      <td>{{item.start_date}}</td>
                       <td>{{item.due_date}}</td>
                       <td>{{item.priority}}</td>
                   </tr>

@@ -1,6 +1,6 @@
 //https://github.com/dbushell/Pikaday
 var picker = new Pikaday({
-    field: document.getElementById('add_date'),
+    field: document.getElementById('start_date'),
     format: 'M/D/YYYY',
     toString(date, format) {
         const day = date.getDate();
