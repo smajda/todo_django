@@ -9,11 +9,11 @@
     </div>
     <br>
     <div class="row">
-      <div id="accordion" role="tablist" aria-multiselectable="true" class = "col-md-12">
+      <div id="add_item" role="tablist" aria-multiselectable="true" class = "col-md-12">
         <div class="card">
           <div class="card-header" role="tab" id="headingOne">
             <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <a data-toggle="collapse" data-parent="#add_item" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Add New Item
               </a>
             </h5>
@@ -24,10 +24,10 @@
                 {% csrf_token %}
                 <div class="row">
                   <div class="col-md-7 form-group">
-                      <input type="text" class="form-control form-control-lg" name = "title_text" placeholder = "Title">
+                      <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" class="form-control form-control-lg" name = "title_text" placeholder = "Title">
                   </div>
                   <div class="col-md-2 form-group">
-                    <input type="text" id = "add_date" class="form-control form-control-lg" name = "add_date" placeholder = "Today">
+                    <input type="text" data-uk-datepicker="{format:'DD.MM.YYYY'}" id = "add_date" class="form-control form-control-lg" name = "add_date" placeholder = "Today">
                   </div>
                   <div class="col-md-2 form-group">
                     <input type="text" id = "due_date" class="form-control form-control-lg" name = "due_date" placeholder = "Due">
