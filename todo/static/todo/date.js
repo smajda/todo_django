@@ -1,4 +1,3 @@
-//https://github.com/dbushell/Pikaday
 var picker = new Pikaday({
     field: document.getElementById('start_date'),
     format: 'M/D/YYYY',

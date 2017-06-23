@@ -1,4 +1,11 @@
-.set_scroll {
-  height:400px;
-  overflow-y: scroll;
+body {
+  background-color: #ecececff;
+}
+
+#content{
+  transition: all 0.4s ease 0s;
+}
+
+.resbr{
+  padding:5%;
 }

@@ -5,7 +5,7 @@
 <html lang = "en">
 
 <head>
-  <title>Calc App</title>
+  <title>Todo App</title>
   <meta charset = "utf-8">
   <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv = "x-ua-compatible" content = "ie-edge">
@@ -19,41 +19,51 @@
   <!-- custom static files -->
   <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}" />
 
+  <link rel="icon" href="{% static 'todo/images/logo.png' %}" type="image/gif" sizes="16x16">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'todo/side_nav.css' %}" />
+
 </head>
 
 <body class="body">
-  <section id="header">
-    <div id="header">
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/calc">Calculator</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/admin">Admin Panel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://github.com/noah-dev/django_calc">Github Repo</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <div id="nav" class="sidenav">
+      <div class="nav_expand">
+        <a href="#">
+          <img src="{% static 'todo/nav/expand_arrow.png' %}" id = "nav_toggle" class="img-fluid">
+        </a>
+      </div>
+
+      <div class="nav_icon">
+        <a href="https://github.com/noah-dev">
+          <img src="{% static 'todo/nav/logo.png' %}" id = "add" class="img-fluid">
+        </a>
+      </div><div class="resbr"></div>
+
+      <div class="nav_icon">
+        <a href="https://github.com/noah-dev">
+          <img src="{% static 'todo/nav/logo.png' %}" id = "view" class="img-fluid">
+        </a>
+      </div><div class="resbr"></div>
+
+      <div class="nav_icon">
+        <a href="https://github.com/noah-dev">
+          <img src="{% static 'todo/nav/logo.png' %}" id = "github" class="img-fluid">
+        </a>
+      </div><div class="resbr"></div>
+
+      <div class="nav_icon">
+        <a href="https://github.com/noah-dev">
+          <img src="{% static 'todo/nav/logo.png' %}" id = "logo" class="img-fluid">
+        </a>
+      </div>
     </div>
-  </section>
 
-  <section id="content">
-    {% block content %}
-    {% endblock %}
-  </section>
-
-  <section id="header">
-    <div id="header">
-
+    <div id="content" >
+      {% block content %}
+      {% endblock %}
     </div>
-  </section>
+  </div>
 
   <!--JS files -->
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -63,9 +73,10 @@
   <script src="{% static 'todo/Pikaday-master/pikaday.js' %}"></script>
 
   <script src="{% static 'todo/date.js' %}"></script>
+  <script src="{% static 'todo/nav.js' %}"></script>
+  <script src="{% static 'todo/item.js' %}"></script>
 
-  <!-- GASP test -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  <script src="{% static 'todo/anime-master/anime.min.js' %}"></script>
 </body>
 
 </html>

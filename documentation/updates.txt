@@ -1,6 +1,14 @@
-June 20, 2017 - Commit: 2d3ce74
+Created with commit: 2d3ce74
 Added this text file to keep track of progress and what resources were used.
 
-* Moved CSS/JS code to a dedicated file in static folder - Commit: 0128fa5
+June 20, 2017
+* Commit 0128fa5: Moved CSS/JS code to a dedicated file in static folder
   - Reference: https://docs.djangoproject.com/en/1.11/intro/tutorial06/
-* Switching from jquery-ui to UIKIT 
+
+June 21, 2017
+* Commit 43fdd15: Switched from jquery-ui to Pikaday
+  - Reference: https://github.com/dbushell/Pikaday
+* Commit a59fb56: Changed model - new field start_date, for when the item should be started
+  - Reference: https://docs.djangoproject.com/en/1.11/topics/migrations/
+
+https://www.w3schools.com/howto/howto_js_sidenav.asp

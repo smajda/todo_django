@@ -12,6 +12,9 @@ from django.contrib import messages
 
 from .models import Item
 
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
 
 class IndexView(generic.ListView):
     template_name = 'todo/index.html'

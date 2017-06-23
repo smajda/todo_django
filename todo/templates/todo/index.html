@@ -1,95 +1,33 @@
 {% extends "todo/base.html" %}
 {% block content %}
-
-<div id="content">
-  <div class="container">
-    <div class="col-12 col-sm-6">
-     <span class="hidden-md-up visible"></span>
-     <span class="hidden-sm-down not-visible"><h1>Todo App</h1></span>
+<div class="container-fluid">
+  <div class="row">
+    <div id="todo_item" class="width col-md-6">
+      <p>Title: {{item_list.0.title_text}}</p>
+      <p>Description: {{item_list.0.desc_text}}</p>
+      <p>Impact: {{item_list.0.impact_text}}</p>
+      <p>Start: {{item_list.0.start_date}}</p>
+      <p>Due: {{item_list.0.due_date}}</p>
+      <p>Added: {{item_list.0.add_date}}</p>
+      <p>Priority: {{item_list.0.priority}}</p>
     </div>
-    <br>
-    <div class="row">
-      <div id="add_item" role="tablist" aria-multiselectable="true" class = "col-md-12">
-        <div class="card">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#add_item" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Add New Item
-              </a>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="card-block set_scroll">
-              <form action="/todo/" method="post">
-                {% csrf_token %}
-                <div class="row">
-                  <div class="col-md-7 form-group">
-                      <input type="text" class="form-control form-control-lg" name = "title_text" placeholder = "Title">
-                  </div>
-                  <div class="col-md-2 form-group">
-                    <input type="text" id = "start_date" class="form-control form-control-lg" name = "add_date" placeholder = "Today">
-                  </div>
-                  <div class="col-md-2 form-group">
-                    <input type="text" id = "due_date" class="form-control form-control-lg" name = "due_date" placeholder = "Due">
-                  </div>
-                </div>
-
-                <div class="row col-md-12 form-group">
-                  <input type="text" class="form-control form-control-lg" name = "desc_text" placeholder = "Description of Task">
-                </div>
-
-                <div class="row col-md-3 form-group">
-                  <button type = "submit" class="btn btn-success btn-lg" name = "submit">Add Item!</button>
-                </div>
-              </form><br>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="todo_list" class="width col-md-6">
+      <table class="table">
+        <thead>
+            <th>Title</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in item_list %}
+          <tr>
+              <td>{{item.title_text}}</td>
+              <td>{{item.due_date}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-    <br>
-    <div class="row">
-      <div id="accordion" role="tablist" aria-multiselectable="true" class = "col-md-12">
-        <div class="card">
-          <div class="card-header" role="tab" id="headingOne">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseList" aria-expanded="true" aria-controls="collapseOne">
-                Hide/Show Items
-              </a>
-            </h5>
-          </div>
-          <div id="collapseList" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-            <div class="card-block set_scroll">
-              <table class="table">
-                <thead>
-                    <th>Title</th>
-                    <th>Desc</th>
-                    <th>Impact</th>
-                    <th>Start Date</th>
-                    <th>Due Date</th>
-                    <th>Priority</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for item in item_list %}
-                  <tr>
-                      <td>{{item.title_text}}</td>
-                      <td>{{item.desc_text}}</td>
-                      <td>{{item.impact_text}}</td>
-                      <td>{{item.start_date}}</td>
-                      <td>{{item.due_date}}</td>
-                      <td>{{item.priority}}</td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
