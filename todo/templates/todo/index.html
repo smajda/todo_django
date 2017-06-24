@@ -1,15 +1,16 @@
 {% extends "todo/base.html" %}
 {% block content %}
+{# Passed variables - item_list and item_select #}
 <div class="container-fluid">
   <div class="row">
     <div id="todo_item" class="width col-md-6">
-      <p>Title: {{item_list.0.title_text}}</p>
-      <p>Description: {{item_list.0.desc_text}}</p>
-      <p>Impact: {{item_list.0.impact_text}}</p>
-      <p>Start: {{item_list.0.start_date}}</p>
-      <p>Due: {{item_list.0.due_date}}</p>
-      <p>Added: {{item_list.0.add_date}}</p>
-      <p>Priority: {{item_list.0.priority}}</p>
+      <p>Title: {{item_select.title_text}}</p>
+      <p>Description: {{item_select.desc_text}}</p>
+      <p>Impact: {{item_select.impact_text}}</p>
+      <p>Start: {{item_select.start_date}}</p>
+      <p>Due: {{item_select.due_date}}</p>
+      <p>Added: {{item_select.add_date}}</p>
+      <p>Priority: {{item_select.priority}}</p>
     </div>
     <div id="todo_list" class="width col-md-6">
       <table class="table">

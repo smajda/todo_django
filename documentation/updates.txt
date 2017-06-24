@@ -11,4 +11,6 @@ June 21, 2017
 * Commit a59fb56: Changed model - new field start_date, for when the item should be started
   - Reference: https://docs.djangoproject.com/en/1.11/topics/migrations/
 
-https://www.w3schools.com/howto/howto_js_sidenav.asp
+June 22, 2017
+* Commit 87b45db: Strcuture of sidebar navigation menu complete. Started work on basic structure of list
+  - Reference: https://www.w3schools.com/howto/howto_js_sidenav.asp

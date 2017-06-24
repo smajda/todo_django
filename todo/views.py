@@ -20,8 +20,14 @@ class IndexView(generic.ListView):
     template_name = 'todo/index.html'
     context_object_name = 'item_list'
 
-    def get_queryset(self):
-        return Item.objects.order_by('-priority')
+    def get(self, request):
+        todo_items = Item.objects.order_by('-priority')
+        return render(request, self.template_name,
+                      {self.context_object_name: todo_items,
+                       'item_select': todo_items[0]})
+
+    # def get_queryset(self):
+    #    return Item.objects.order_by('-priority')
 
 
 def AddItem(request):

@@ -14,7 +14,7 @@ class Item(models.Model):
     add_date = models.DateTimeField()
 
     def __repr__(self):
-        pass
+        return self.title_text
 
     def __str__(self):
         return self.title_text
