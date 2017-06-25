@@ -9,3 +9,10 @@ body {
 .resbr{
   padding:5%;
 }
+
+.item{
+  transition: all 0.4s ease 0s;
+}
+.item:hover {
+  opacity: 0.5;
+}

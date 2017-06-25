@@ -30,7 +30,6 @@ def index(request):
 
 
 def ajax(request):
-    print("Ajax")
     try:
         id = request.GET['id']
         item_select = get_object_or_404(Item, pk=id)
