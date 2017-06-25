@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.views import generic
+
+from django.http import JsonResponse
 
 from django.views.generic.edit import FormView
 
@@ -13,37 +15,31 @@ from django.contrib import messages
 from .models import Item
 
 import json
-from django.core.serializers.json import DjangoJSONEncoder
+import datetime
+from django.forms.models import model_to_dict
 
 
-class IndexView(generic.ListView):
+def index(request):
     template_name = 'todo/index.html'
     context_object_name = 'item_list'
-
-    def get(self, request):
-        todo_items = Item.objects.order_by('-priority')
-        return render(request, self.template_name,
-                      {self.context_object_name: todo_items,
-                       'item_select': todo_items[0]})
-
-    # def get_queryset(self):
-    #    return Item.objects.order_by('-priority')
+    todo_items = Item.objects.order_by('-due_date')
+    item_select = todo_items[0]
+    return render(request, template_name,
+                  {context_object_name: todo_items,
+                   'item_select': item_select})
 
 
-def AddItem(request):
-    if 'submit' in request.POST:
-        try:
-            title_text = request.POST['op_a']
-            desc_text = request.POST['op']
-            impact_text = request.POST['op_b']
-            add_date = request.POST['op_b']
-            due_date = request.POST['op_b']
-            priority = request.POST['op_b']
-            new_item = Item(title_text, desc_text, impact_text, add_date,
-                            due_date, priority)
-            new_item.save()
-        except:
-            messages.warning(request, "Input Not Valid - Please Try Again")
-            HttpResponseRedirect(request.path)
-    # Used instead of redirect so that back button goes back to calc page
-    return HttpResponseRedirect(reverse('calc:generic_index'))
+def ajax(request):
+    print("Ajax")
+    try:
+        id = request.GET['id']
+        item_select = get_object_or_404(Item, pk=id)
+    except:
+        print("Error at todo.view.ajax")
+
+    pre_data = model_to_dict(item_select)
+    pre_data['add_date'] = str(pre_data['add_date'])
+    pre_data['due_date'] = str(pre_data['due_date'])
+    pre_data['start_date'] = str(pre_data['start_date'])
+    data = json.dumps(pre_data)
+    return JsonResponse(data, safe=False)

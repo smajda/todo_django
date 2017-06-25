@@ -4,6 +4,7 @@
 <div class="container-fluid">
   <div class="row">
     <div id="todo_item" class="width col-md-6">
+      <p id="json_test"></p>
       <p>Title: {{item_select.title_text}}</p>
       <p>Description: {{item_select.desc_text}}</p>
       <p>Impact: {{item_select.impact_text}}</p>
@@ -21,7 +22,7 @@
         </thead>
         <tbody>
           {% for item in item_list %}
-          <tr>
+          <tr class = "item" id = {{item.id}}>
               <td>{{item.title_text}}</td>
               <td>{{item.due_date}}</td>
           </tr>
