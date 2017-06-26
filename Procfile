@@ -1,1 +1,1 @@
-web: gunicorn dj_calc.wsgi --log-file -
+web: gunicorn dj_todo.wsgi --log-file -
