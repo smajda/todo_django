@@ -16,3 +16,27 @@ body {
 .item:hover {
   opacity: 0.5;
 }
+
+#todo_item, #todo_list{
+  margin: 10px;
+  border-style: solid;
+  border-color: #ca0000ff;
+  border-radius: 10px;
+}
+
+
+#new_item {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+.exit_new_item{
+  background-color: #ca0000ff;
+}

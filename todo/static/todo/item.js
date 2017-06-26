@@ -1,4 +1,4 @@
-var testdata;
+//CHange selected item
 $(".item").click(function () {
   var id = $(this).get(0).id;
   $.ajax({
@@ -20,3 +20,22 @@ $(".item").click(function () {
     }
   });
 });
+
+
+//Show/hide overlay form for new items
+
+$("#add").click(function (){
+  $("#new_item").css('display', 'block');
+});
+$("#cancel_button").click(function (){
+  $("#new_item").css('display', 'none');
+});
+
+/*
+// https://stackoverflow.com/questions/2457246/jquery-click-function-exclude-children
+$("#new_item").click(function (){
+  $("#new_item").css('display', 'none');
+}).children().click(function(e) {
+  return false;
+});
+*/

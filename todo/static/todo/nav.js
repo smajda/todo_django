@@ -1,4 +1,4 @@
-var show = '10%';
+var show = '12%';
 var hide = '3%';
 var nav_expanded = false;
 $("#nav").css('width', show)

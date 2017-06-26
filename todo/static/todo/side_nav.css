@@ -10,17 +10,14 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 0px;
     transition: all 0.4s ease 0s;
 }
 
 #nav {
   background-color: #ca0000ff;
   padding: 0px;
-  padding-top: 1%;
 }
 .nav_expand{
   margin: 0 auto;
@@ -37,6 +34,17 @@ body {
   padding: 5%;
 }
 
-.nav_expand:hover, .nav_icon:hover {
+.nav_expand:hover {
+  filter: opacity(50%);
+}
+
+#github{
+  padding: 10%;
+}
+
+#add, #list, #logo, #github{
+  transition: all 0.4s ease 0s;
+}
+#add:hover, #list:hover, #logo:hover, #github:hover{
   filter: opacity(50%);
 }

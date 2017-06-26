@@ -1,22 +1,17 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
-from django.views import generic
-
 from django.http import JsonResponse
-
-from django.views.generic.edit import FormView
-
-from django.utils import timezone
-
-from django.contrib import messages
-
 from .models import Item
 
 import json
-import datetime
 from django.forms.models import model_to_dict
+
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
+from django.views.generic.edit import FormView
+from django.utils import timezone
+from django.contrib import messages
+from datetime import datetime
 
 
 def index(request):
@@ -42,3 +37,37 @@ def ajax(request):
     pre_data['start_date'] = str(pre_data['start_date'])
     data = json.dumps(pre_data)
     return JsonResponse(data, safe=False)
+
+
+def add_item(request):
+    def convert_date(date_string):
+        return datetime.strptime(date_string, '%m/%d/%Y')
+    print("test")
+    if 'add_button' in request.POST:
+        # try:
+        print(request.POST)
+        title_text = request.POST['title']
+        desc_text = request.POST['desc']
+        impact_text = request.POST['impact']
+        start_date = convert_date(request.POST['start'])
+        due_date = convert_date(request.POST['due'])
+        complete = False
+        priority = -1
+        add_date = timezone.now()
+
+        new_rec = Item(title_text=title_text,
+                       desc_text=desc_text,
+                       impact_text=impact_text,
+                       start_date=start_date,
+                       due_date=due_date,
+                       priority=priority,
+                       complete=complete,
+                       add_date=add_date)
+        new_rec.save()
+
+        # except:
+        # messages.warning(request, "Input Not Valid - Please Try Again")
+        # HttpResponseRedirect(request.path)
+
+    # Used instead of redirect so that back button goes back to calc page
+    return HttpResponseRedirect(reverse('todo:index'))
