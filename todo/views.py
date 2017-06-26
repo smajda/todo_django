@@ -18,7 +18,10 @@ def index(request):
     template_name = 'todo/index.html'
     context_object_name = 'item_list'
     todo_items = Item.objects.order_by('-due_date')
-    item_select = todo_items[0]
+    try:
+        item_select = todo_items[0]
+    except:
+        item_select = {'title_txt': "No Items"}
     return render(request, template_name,
                   {context_object_name: todo_items,
                    'item_select': item_select})
