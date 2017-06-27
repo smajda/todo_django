@@ -1,5 +1,6 @@
 //CHange selected item
 $(".item").click(function () {
+  $("#todo_item").css('background-color', '##ca0000ff')
   var id = $(this).get(0).id;
   $.ajax({
     url: 'ajax/',
@@ -17,6 +18,8 @@ $(".item").click(function () {
       $("#json_due_date").text('Due Date: ' + data['due_date']);
       $("#json_add_date").text('Add Date: ' + data['add_date']);
       $("#json_priority").text('Priority: ' + data['priority']);
+
+      $("#todo_item").css('background-color', '#ecececff')
     }
   });
 });
