@@ -21,8 +21,8 @@ $(".item").click(function () {
         $("#json_add_date").text('Add Date: ' + data['add_date']);
         $("#json_priority").text('Priority: ' + data['priority']);
 
-        setTimeout(function(){ $("#todo_item").css('background-color', '#ecececff') }, 500)
-        setTimeout(function(){ $("#todo_item").css('color', 'black') }, 500)
+        setTimeout(function(){ $("#todo_item").css('background-color', '#ecececff') }, 400)
+        setTimeout(function(){ $("#todo_item").css('color', 'black') }, 400)
       }
     });
   }, 500);
