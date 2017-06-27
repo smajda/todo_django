@@ -1,26 +1,40 @@
 //CHange selected item
 $(".item").click(function () {
+  $("#todo_item").css('background-color', '#ca0000ff')
+  $("#todo_item").css('color', '#ca0000ff')
   var id = $(this).get(0).id;
-  $.ajax({
-    url: 'ajax/',
-    data: {
-      'id': id
-    },
-    dataType: 'json',
+  setTimeout(function(){
+    $.ajax({
+      url: 'ajax/',
+      data: {
+        'id': id
+      },
+      dataType: 'json',
 
-    success: function (data) {
-      data = JSON.parse(data);
-      $("#json_title_text").text('Title: ' + data['title_text']);
-      $("#json_desc_text").text('Description: ' + data['desc_text']);
-      $("#json_impact_text").text('Impact: ' + data['impact_text']);
-      $("#json_start_date").text('Start Date: ' + data['start_date']);
-      $("#json_due_date").text('Due Date: ' + data['due_date']);
-      $("#json_add_date").text('Add Date: ' + data['add_date']);
-      $("#json_priority").text('Priority: ' + data['priority']);
-    }
-  });
+      success: function (data) {
+        data = JSON.parse(data);
+        $("#json_title_text").text('Title: ' + data['title_text']);
+        $("#json_desc_text").text('Description: ' + data['desc_text']);
+        $("#json_impact_text").text('Impact: ' + data['impact_text']);
+        $("#json_start_date").text('Start Date: ' + data['start_date']);
+        $("#json_due_date").text('Due Date: ' + data['due_date']);
+        $("#json_add_date").text('Add Date: ' + data['add_date']);
+        $("#json_priority").text('Priority: ' + data['priority']);
+
+        setTimeout(function(){ $("#todo_item").css('background-color', '#ecececff') }, 200)
+        setTimeout(function(){ $("#todo_item").css('color', 'black') }, 200)
+      }
+    });
+  }, 200);
 });
 
+function animate_item() {
+
+  //$("#todo_item").css('background-color', '#ca0000ff')
+  //$("#todo_item").css('color', '#ca0000ff')
+  //$("#todo_item").css('background-color', '#ecececff')
+  //$("#todo_item").css('text-color', 'black')
+}
 
 //Show/hide overlay form for new items
 
