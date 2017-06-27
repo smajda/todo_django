@@ -3,18 +3,21 @@
 {# Passed variables - item_list and item_select #}
 <div class="container-fluid">
   <div class="row">
-    <div id="todo_item" class="col-md-5 panel">
-      <p id="json_test"></p>
-      <p id="json_title_text">Title: {{item_select.title_text}}</p>
-      <p id="json_desc_text">Description: {{item_select.desc_text}}</p>
-      <p id="json_impact_text">Impact: {{item_select.impact_text}}</p>
-      <p id="json_start_date">Start: {{item_select.start_date}}</p>
-      <p id="json_due_date">Due: {{item_select.due_date}}</p>
-      <p id="json_add_date">Added: {{item_select.add_date}}</p>
-      <p id="json_priority">Priority: {{item_select.priority}}</p>
+    <div class="col-md-5 panel">
+      <div id="todo_item">
+        <div class="row">
+          <p class="col-md-6" id="json_title_text"></p>
+          <p class="col-md-6" id="json_due_date"></p>
+        </div>
+        <p id="json_desc_text"></p>
+        <p id="json_impact_text"></p>
+        <p id="json_start_date"></p>
+        <p id="json_add_date"></p>
+      <!-- <p id="json_priority">Priority: {{item_select.priority}}</p> -->
+      </div>
     </div>
     <div id="todo_list" class="col-md-5 panel">
-      <div>
+      <div id = "todo_container">
         <table class="table">
           <thead>
               <th>Title</th>

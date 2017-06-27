@@ -17,15 +17,22 @@ body {
   opacity: 0.5;
 }
 
-#todo_item, #todo_list{
+#todo_item{
   margin: 10px;
+  padding: 5px;
   border-style: solid;
   border-color: #ca0000ff;
   border-radius: 10px;
-  transition: background-color 0.3s ease;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
+#todo_container{
+  margin: 10px;
+  padding: 3px;
+  border-style: solid;
+  border-color: #ca0000ff;
+  border-radius: 10px;
+}
 
 #new_item {
     position: fixed; /* Sit on top of the page content */
@@ -38,6 +45,10 @@ body {
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+#json_title_text, #json_due_date{
+  font-weight: bold
 }
 .exit_new_item{
   background-color: #ca0000ff;
