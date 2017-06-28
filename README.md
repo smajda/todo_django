@@ -2,5 +2,5 @@
 Simple Todo App with User Profiles (NOW LIVE!: http://todo-dj.herokuapp.com/todo/ )
 
 Todo: 
-Finish styling - mainly CSS work
-Finish animation - current approach is css/jquery (maybe another framework like animate.css?)
+1. Finish styling - mainly CSS work
+2. Finish animation - current approach is css/jquery (maybe another framework like animate.css?)
