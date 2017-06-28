@@ -1,2 +1,2 @@
 def secret_key():
-    return '$q+mrio$1d^2v!w%nmm*(!-gtp5w%b4lullc%-5@i89-^do$bx'
+    return 'gL2H"oYfk"BG"^I~00b,Eti)`0d?2g9vJAQ5aYnx[U/Oq`n>D'
