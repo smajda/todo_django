@@ -39,8 +39,9 @@
 
 
   <div id="new_item" class="row">
+    <div class="resbr"></div>
     <div class="col-md-8 offset-2">
-      <div class="container" style="background-color: #ecececff">
+      <div id="new_item_container" class="container" style="background-color: #ecececff">
         <form action="/todo/add_item/" method="post" id = "item_form">
           {% csrf_token %}
           <div class="form-group">
