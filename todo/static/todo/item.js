@@ -39,28 +39,10 @@ $(".item").click(function () {
   }, 600);
 });
 
-function animate_item() {
-
-  //$("#todo_item").css('background-color', '#ca0000ff')
-  //$("#todo_item").css('color', '#ca0000ff')
-  //$("#todo_item").css('background-color', '#ecececff')
-  //$("#todo_item").css('text-color', 'black')
-}
-
 //Show/hide overlay form for new items
-
 $("#add").click(function (){
   $("#new_item").css('display', 'block');
 });
 $("#cancel_button").click(function (){
   $("#new_item").css('display', 'none');
 });
-
-/*
-// https://stackoverflow.com/questions/2457246/jquery-click-function-exclude-children
-$("#new_item").click(function (){
-  $("#new_item").css('display', 'none');
-}).children().click(function(e) {
-  return false;
-});
-*/
