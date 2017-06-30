@@ -22,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # Use a heroku variable for secret key
+print(os.environ)
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ['os.environ']
 
