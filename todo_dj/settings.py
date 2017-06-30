@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 from .secret_settings import secret_key
 import dj_database_url
+from boto.s3.connection import S3Connection
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,9 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # Use a heroku variable for secret key
-print(os.environ)
-if 'SECRET_KEY' in os.environ:
-    SECRET_KEY = os.environ['os.environ']
+SECRET_KEY = S3Connection(os.environ['SECRET_KEY'])
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # If not using heroku environment, enable secret key by using function
