@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from .models import Item
 
+import os
 import json
 from django.forms.models import model_to_dict
 
@@ -17,7 +18,7 @@ from datetime import datetime
 def index(request):
     template_name = 'todo/index.html'
     context_object_name = 'item_list'
-    todo_items = Item.objects.order_by('-due_date')
+    todo_items = Item.objects.filter(due_date__gt=timezone.now()).order_by('due_date')
     return render(request, template_name,
                   {context_object_name: todo_items,
                    'refresh': True})
@@ -57,35 +58,45 @@ def ajax(request):
     return JsonResponse(data, safe=False)
 
 
+def simple_auth(password):
+    if password == os.environ.get('TODO_DJ_ADD_PASS'):
+        return True
+    else:
+        return False
+
+
 def add_item(request):
     def convert_date(date_string):
         return datetime.strptime(date_string, '%m/%d/%Y')
     print("test")
     if 'add_button' in request.POST:
-        # try:
-        print(request.POST)
-        title_text = request.POST['title']
-        desc_text = request.POST['desc']
-        impact_text = request.POST['impact']
-        start_date = convert_date(request.POST['start'])
-        due_date = convert_date(request.POST['due'])
-        complete = False
-        priority = -1
-        add_date = timezone.now()
+        if simple_auth(request.POST['password']):
+            try:
+                title_text = request.POST['title']
+                desc_text = request.POST['desc']
+                impact_text = request.POST['impact']
+                start_date = convert_date(request.POST['start'])
+                due_date = convert_date(request.POST['due'])
+                complete = False
+                priority = -1
+                add_date = timezone.now()
 
-        new_rec = Item(title_text=title_text,
-                       desc_text=desc_text,
-                       impact_text=impact_text,
-                       start_date=start_date,
-                       due_date=due_date,
-                       priority=priority,
-                       complete=complete,
-                       add_date=add_date)
-        new_rec.save()
+                new_rec = Item(title_text=title_text,
+                               desc_text=desc_text,
+                               impact_text=impact_text,
+                               start_date=start_date,
+                               due_date=due_date,
+                               priority=priority,
+                               complete=complete,
+                               add_date=add_date)
+                new_rec.save()
 
-        # except:
-        # messages.warning(request, "Input Not Valid - Please Try Again")
-        # HttpResponseRedirect(request.path)
+            except:
+                messages.warning(request, "Input Not Valid - Please Try Again")
+                HttpResponseRedirect(request.path)
+        else:
+            messages.warning(request, "Password Not Valid")
+            HttpResponseRedirect(request.path)
 
     # Used instead of redirect so that back button goes back to calc page
     return HttpResponseRedirect(reverse('todo:index'))

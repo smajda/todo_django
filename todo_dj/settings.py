@@ -19,19 +19,12 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# SECURITY WARNING: keep the secret key used in production secret!
-# If not using heroku environment, enable secret key by using function
-# from secret_settings or entering manually.
-# SECRET_KEY = secret_key()
-
 # SECURITY WARNING: don't run with debug turned on in productiocinen!
-# DEBUG = True
+DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY')
+if not SECRET_KEY and DEBUG:
+    SECRET_KEY = secret_key()
+
 
 ALLOWED_HOSTS = ['todo-dj.herokuapp.com',
                  'localhost', ]

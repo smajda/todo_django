@@ -9,6 +9,6 @@ urlpatterns = [
 
     url(r'^$', views.index, name='index'),
     url(r'^ajax/$', views.ajax, name='ajax'),
-    # url(r'^add_item/$', views.add_item, name='add_item'),
+    url(r'^add_item/$', views.add_item, name='add_item'),
     url(r'^complete_item/$', views.complete_item, name='complete_item'),
 ]
