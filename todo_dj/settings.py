@@ -23,18 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-# Use a heroku variable for secret key - DEPRECIATED
-# SECRET_KEY = S3Connection(os.environ['SECRET_KEY'])
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # If not using heroku environment, enable secret key by using function
 # from secret_settings or entering manually.
-# SECRET_KEY = secret_key()
+SECRET_KEY = secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['todo-dj.herokuapp.com',
                  'localhost', ]

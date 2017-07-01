@@ -5,34 +5,36 @@
   <div class="row">
     <div class="col-md-5 panel">
       <div id="todo_item">
-        <div class="row">
-          <p class="col-md-6" id="json_title_text"></p>
-          <p class="col-md-6" id="json_due_date"></p>
+        <div>
+          <div class="row">
+            <div class="col-md-5">
+              <h1 class="item_header" id="json_title_text"></h1>
+            </div>
+            <div class="col-md-5">
+              <h1 class="item_header" id="json_due_date"></h1>
+            </div>
+          </div>
+          <div class="item_body">
+            <p><b>Description:</b><div id="json_desc_text"></div></p>
+            <p><b>Impact:</b><div id="json_impact_text"></div></p>
+            <p><b>Start Date:</b><div id="json_start_date"></div></p>
+            <p><b>Date Item Was Added:</b><div id="json_add_date"></div></p>
+            <p><b>Complete?:</b><div id="json_complete"></div></p>
+          </div>
         </div>
-        <p id="json_desc_text"></p>
-        <p id="json_impact_text"></p>
-        <p id="json_start_date"></p>
-        <p id="json_add_date"></p>
-      <!-- <p id="json_priority">Priority: {{item_select.priority}}</p> -->
       </div>
     </div>
     <div id="todo_list" class="col-md-5 panel">
       <div id = "todo_container">
-        <table class="table">
-          <thead>
-              <th>Title</th>
-              <th>Due Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in item_list %}
-            <tr class = "item" id = {{item.id}}>
-                <td>{{item.title_text}}</td>
-                <td>{{item.due_date}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        {% for item in item_list %}
+        <div class="item" id = {{item.id}}>
+          <div class="item_info">
+            <h3><b>Title:</b> {{item.title_text}}</h3>
+            <h4><b>Due:</b> {{item.due_date}}</h4>
+            <h4><b>Completed:</b> {{item.complete}}</h4>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
