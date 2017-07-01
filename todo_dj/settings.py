@@ -28,10 +28,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # If not using heroku environment, enable secret key by using function
 # from secret_settings or entering manually.
-SECRET_KEY = secret_key()
+# SECRET_KEY = secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in productiocinen!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['todo-dj.herokuapp.com',
                  'localhost', ]
