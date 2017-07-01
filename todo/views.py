@@ -23,10 +23,29 @@ def index(request):
                    'refresh': True})
 
 
+def complete_item(request):
+    try:
+        item_id = request.GET['id']
+        complete = request.GET['complete']
+        item = get_object_or_404(Item, pk=item_id)
+    except:
+        print("Error at todo.view.ajax")
+    if complete == "false":
+        bool_complete = False
+    elif complete == "true":
+        bool_complete = True
+    else:
+        print("ERROR WITH complete_item")
+    item.complete = bool_complete
+    item.save()
+
+    return JsonResponse({'tmp': 'success'}, safe=False)
+
+
 def ajax(request):
     try:
-        id = request.GET['id']
-        item_select = get_object_or_404(Item, pk=id)
+        item_id = request.GET['id']
+        item_select = get_object_or_404(Item, pk=item_id)
     except:
         print("Error at todo.view.ajax")
 

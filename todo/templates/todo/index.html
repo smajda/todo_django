@@ -19,7 +19,7 @@
             <p><b>Impact:</b><div id="json_impact_text"></div></p>
             <p><b>Start Date:</b><div id="json_start_date"></div></p>
             <p><b>Date Item Was Added:</b><div id="json_add_date"></div></p>
-            <p><b>Complete?:</b><div id="json_complete"></div></p>
+            <b>Date Item Was Added: </b><input id="-1" type="checkbox" name="item_complete" checked>
           </div>
         </div>
       </div>
@@ -31,7 +31,14 @@
           <div class="item_info">
             <h3><b>Title:</b> {{item.title_text}}</h3>
             <h4><b>Due:</b> {{item.due_date}}</h4>
-            <h4><b>Completed:</b> {{item.complete}}</h4>
+
+            <h4><div class="complete_info" id = {{item.id}}>
+              {% if item.complete %}
+                <b>Complete:</b> <span style='color: green'>{{item.complete}}</span>
+              {% else %}
+                <b>Complete:</b> <span style='color: red'>{{item.complete}}</span>
+              {% endif %}
+            </div></h4>
           </div>
         </div>
         {% endfor %}

@@ -30,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # from secret_settings or entering manually.
 SECRET_KEY = secret_key()
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in productiocinen!
 DEBUG = True
 
 ALLOWED_HOSTS = ['todo-dj.herokuapp.com',
