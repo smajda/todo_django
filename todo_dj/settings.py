@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY = secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in productiocinen!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['todo-dj.herokuapp.com',
                  'localhost', ]
