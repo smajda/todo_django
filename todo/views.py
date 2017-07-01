@@ -18,10 +18,11 @@ from datetime import datetime
 def index(request):
     template_name = 'todo/index.html'
     context_object_name = 'item_list'
-    todo_items = Item.objects.filter(due_date__gt=timezone.now()).order_by('due_date')
+    todo_items = Item.objects.filter(due_date__gte=timezone.now()).order_by('due_date')
+    past_items = Item.objects.filter(due_date__lt=timezone.now()).order_by('due_date')
     return render(request, template_name,
                   {context_object_name: todo_items,
-                   'refresh': True})
+                   'past_items': past_items})
 
 
 def complete_item(request):

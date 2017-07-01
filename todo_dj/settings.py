@@ -19,8 +19,11 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: don't run with debug turned on in productiocinen!
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+DEBUG_STR = os.environ.get('DJANGO_DEBUG')
+if DEBUG_STR == "True":
+    DEBUG = True
 SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY and DEBUG:
     SECRET_KEY = secret_key()
