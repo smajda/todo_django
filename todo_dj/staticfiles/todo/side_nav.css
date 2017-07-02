@@ -44,6 +44,7 @@ body {
 
 #add, #list, #logo, #github{
   transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
 #add:hover, #list:hover, #logo:hover, #github:hover{
   filter: opacity(50%);
