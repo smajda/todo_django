@@ -32,17 +32,14 @@ function item_ajax(item_id) {
         //Parse the data as JSON and begin assigning attributes to the elements
         data = JSON.parse(data);
         $("#json_title_text").text(data['title_text']);
-        //Instead of everything, just get the month, date and year
-        var due_date = data['due_date'].split('-');
-        var due_date = due_date[1] + '/' + due_date[2].slice(0,2) + '/' + due_date[0]
-        $("#json_due_date").text(due_date);
 
         $("#json_desc_text").text(data['desc_text']);
         $("#json_impact_text").text(data['impact_text']);
 
-        //May apply similair treatment later
-        $("#json_start_date").text(data['start_date']);
-        $("#json_add_date").text(data['add_date']);
+        //Instead of everything, just get the month, date and year
+        $("#json_due_date").text(date_format(data['due_date']));
+        $("#json_start_date").text(date_format(data['start_date']));
+        $("#json_add_date").text(date_format(data['add_date']));
 
         //Retrive the checkbox element.
         //If the item is complete, then check it
@@ -61,6 +58,11 @@ function item_ajax(item_id) {
       }
     });
   }, 600);
+}
+
+function date_format(datetime){
+  var date = datetime.split('-');
+  return date[1] + '/' + date[2].slice(0,2) + '/' + date[0]
 }
 
 //When an item is clicked on from the right-hand side lists, display that item
