@@ -42,10 +42,18 @@ body {
   padding: 10%;
 }
 
-#add, #list, #logo, #github{
+ #nav_toggle, #add, #logo, #github{
   transition: all 0.4s ease 0s;
   cursor: pointer;
 }
 #add:hover, #list:hover, #logo:hover, #github:hover{
   filter: opacity(50%);
+}
+
+
+.mirror_img {
+    -moz-transform: scale(-1, -1);
+    -o-transform: scale(-1, -1);
+    -webkit-transform: scale(-1, -1);
+    transform: scale(-1, -1);
 }
