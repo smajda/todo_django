@@ -98,11 +98,20 @@ $('input[name="item_complete"]').on('change', function () {
     //assign the appropriate html markup depending on if it is complete
     //or not complete
     success: function (data) {
-      var item_complete_element = $("#" + item_id +".complete_info")
+      var item_complete_element = $("#" + item_id +".complete_info");
+      var complete_status = item_complete_element.find("span");
       if (complete){
-        item_complete_element.html("<b>Complete:</b> <span style='color: green'>True</span>")
+        complete_status.css("color","#ecececff");
+        setTimeout(function(){
+          complete_status.text("True");
+          complete_status.css("color","green");
+        }, 500);
       } else if (!complete){
-        item_complete_element.html("<b>Complete:</b> <span style='color: red'>False</span>")
+        complete_status.css("color","#ecececff");
+        setTimeout(function(){
+          complete_status.text("False");
+          complete_status.css("color","red");
+      }, 500);
       } else {
         console.log("ERROR WITH CHECKBOX JS")
       }
