@@ -1,36 +1,52 @@
+//On document load, populate the left-hand side with the first item from
+//the right-hand side.
 $(function() {
-  id = $( ".item:first" ).get(0).id
-  item_ajax(id)
+  //item_id is equivalent to the item's pk in the database.
+  item_id = $( ".item:first" ).get(0).id
+  item_ajax(item_id)
 });
 
+//Retrive an item from the right-hand side list based on item_id
+//item_id is equivalent to items'pk in the database.
 function item_ajax(item_id) {
-  //Retrive an item from the right-hand side list
-
-  //Animation stuff
+  //Animation. #todo_item holds the elements that display the item's information
+  //Begin with a fade to 0 opacity (disappear), wait a bit and then
+  //reappear with fade to 1 opacity
   $("#todo_item").fadeTo(400, 0, function() {
     $("#todo_item").delay(400);
     $("#todo_item").fadeTo(400, 1);
   })
+
+  //In order to give time for the animation, delay the ajax request by 600 ms
   setTimeout(function(){
+    //Setup the ajax request and send it off - handled by urls.py
     $.ajax({
-      url: 'ajax/',
+      url: 'show_item/',
       data: {
         'id': item_id
       },
       dataType: 'json',
 
+      //When it returns, populate the fields in #todo_item
       success: function (data) {
+        //Parse the data as JSON and begin assigning attributes to the elements
         data = JSON.parse(data);
         $("#json_title_text").text(data['title_text']);
-        $("#json_desc_text").text(data['desc_text']);
-        $("#json_impact_text").text(data['impact_text']);
-        $("#json_start_date").text(data['start_date']);
+        //Instead of everything, just get the month, date and year
         var due_date = data['due_date'].split('-');
         var due_date = due_date[1] + '/' + due_date[2].slice(0,2) + '/' + due_date[0]
         $("#json_due_date").text(due_date);
+
+        $("#json_desc_text").text(data['desc_text']);
+        $("#json_impact_text").text(data['impact_text']);
+
+        //May apply similair treatment later
+        $("#json_start_date").text(data['start_date']);
         $("#json_add_date").text(data['add_date']);
-        //$("#json_complete").text(data['complete']);
-        //"<input type="checkbox" name="complete" value="True" checked> Complete?")
+
+        //Retrive the checkbox element.
+        //If the item is complete, then check it
+        //If the item is not complete, do not check it.
         var checkbox = $('input[name="item_complete"]')
         if (data['complete'] == false) {
           checkbox.prop('checked', false);
@@ -39,25 +55,34 @@ function item_ajax(item_id) {
         } else {
           alert("ERROR WITH CHECKBOX")
         }
+        //Assign an pk to the checkbox this is used when the user clicks the
+        //checkbox and the record in the database needs to be updated.
         checkbox.attr('id', item_id);
       }
     });
   }, 600);
 }
 
+//When an item is clicked on from the right-hand side lists, display that item
+//on the left-hand side.
 $(".item").click(function () {
-  //Change selected item
+  //Retrive the elements id, equivalent to the item's pk in the database
   var id = $(this).get(0).id;
   item_ajax(id)
 });
 
 
+//When the checkbox is clicked, this function is called.
+//Two things are accomplished: 1) The database is updated
+//2) The item's complete status on the right-hand side is updated
 $('input[name="item_complete"]').on('change', function () {
+  //Retrive the checkbox element
   var checkbox = $('input[name="item_complete"]')
+  //Get it's item_id, equivalent to item's pk in database
   var item_id = checkbox.get(0).id;
   var complete = checkbox.is(':checked');
-  console.log(item_id)
 
+  //Setup the ajax request and send it off - handled by urls.py
   $.ajax({
     url: 'complete_item/',
     data: {
@@ -66,6 +91,10 @@ $('input[name="item_complete"]').on('change', function () {
     },
     dataType: 'json',
 
+    //When it returns, the database has been updated. Now the frontend
+    //neeeds to be updated. Find the item from the right-hand side and
+    //assign the appropriate html markup depending on if it is complete
+    //or not complete
     success: function (data) {
       var item_complete_element = $("#" + item_id +".complete_info")
       if (complete){

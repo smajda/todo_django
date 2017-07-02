@@ -8,7 +8,7 @@ urlpatterns = [
     # url(r'^ajax/$', views.IndexView.ajax(), name='generic_index'),
 
     url(r'^$', views.index, name='index'),
-    url(r'^ajax/$', views.ajax, name='ajax'),
+    url(r'^show_item/$', views.show_item, name='show_item'),
     url(r'^add_item/$', views.add_item, name='add_item'),
     url(r'^complete_item/$', views.complete_item, name='complete_item'),
 ]
