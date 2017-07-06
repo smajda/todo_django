@@ -4,6 +4,7 @@ from .models import Item
 
 import os
 import json
+import random
 from django.forms.models import model_to_dict
 
 from django.http import HttpResponseRedirect
@@ -71,6 +72,61 @@ def show_item(request):
     # Dump data and return it
     data = json.dumps(pre_data)
     return JsonResponse(data, safe=False)
+
+
+def add_item_public(request):
+    desc_options = ["Complete work on next side project",
+                    "Get milk",
+                    "Finish documentation",
+                    "Learn New Language/Framework (Java, NodeJS, Scala, etc.)",
+                    "Finish the book"]
+    imp_options = ["Sharpen my skills and bolster the portfolio.",
+                   "I don't want to eat cereal with water. Get milk.",
+                   "Code can be better understood by others (and future me)",
+                   "Expand my capabiliities so I can build new things",
+                   "Gain a new perspective and grow as a person"]
+    '''Only the date fields may be modified'''
+    def convert_date(date_string):
+        '''Helper function to convert dates as strings to datetime objects'''
+        return datetime.strptime(date_string, '%m/%d/%Y')
+
+    if 'add_button' in request.POST:
+        if len(request.POST['start']) <= 10 or len(request.POST['due']) <= 10:
+            try:
+                option = random.randint(0, 4)
+                # Attempt to fill out a new item and save it to the database
+                title_text = 'Preset Example Title ' + str(option)
+                desc_text = desc_options[option]
+                impact_text = imp_options[option]
+                start_date = convert_date(request.POST['start'])
+                due_date = convert_date(request.POST['due'])
+                complete = False
+                priority = -1
+                add_date = timezone.now()
+
+                new_item = Item(title_text=title_text,
+                                desc_text=desc_text,
+                                impact_text=impact_text,
+                                start_date=start_date,
+                                due_date=due_date,
+                                priority=priority,
+                                complete=complete,
+                                add_date=add_date)
+                new_item.save()
+
+            except:
+                # If it didn't work, assume the provided data was invalid and
+                # request user try again.
+                messages.warning(request, "Input Not Valid - Please Try Again")
+                HttpResponseRedirect(request.path)
+        else:
+            # If it didn't work, assume the provided data was invalid and
+            # request user try again.
+            messages.warning(request, "Date Not Valid")
+            HttpResponseRedirect(request.path)
+
+    # Used instead of redirect so that back button goes back to todo page
+    return HttpResponseRedirect(reverse('todo:index'))
 
 
 def simple_auth(password):
