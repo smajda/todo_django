@@ -19,5 +19,5 @@ from . import views
 urlpatterns = [
     url(r'^$', views.home),
     url(r'^todo/', include('todo.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^todo_site_panel/', admin.site.urls),
 ]
