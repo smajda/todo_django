@@ -1,0 +1,20 @@
+{% extends 'login/base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="col-sm-4">
+        <div class="login_form">
+            <h1>Login</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Login</button>
+            </form>
+            <h1>Or Continue As Guest</h1>
+            <p>New Items will not be saved</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

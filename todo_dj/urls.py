@@ -18,6 +18,7 @@ from django.contrib import admin
 from . import views
 urlpatterns = [
     url(r'^$', views.home),
+    url(r'^login/', include('login.urls')),
     url(r'^todo/', include('todo.urls')),
     url(r'^todo_site_panel/', admin.site.urls),
 ]
