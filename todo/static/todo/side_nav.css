@@ -16,7 +16,7 @@ body {
 }
 
 #nav {
-  background-color: #ca0000ff;
+  background-color: #ca0000;
   padding: 0px;
 }
 .nav_expand{
@@ -27,7 +27,7 @@ body {
 }
 
 .nav_icon{
-  background-color: #f9f9f9ff;
+  background-color: #f9f9f9;
   border-radius: 5px;
   margin: 0 auto;
   width: 80%;

@@ -1,5 +1,5 @@
 body {
-  background-color: #ecececff;
+  background-color: #ececec;
 }
 
 #content{
@@ -18,9 +18,9 @@ body {
   opacity: 0.5;
 }
 .item_info{
-  background-color: #ecececff;
+  background-color: #ececec;
   border-style: solid;
-  border-color: #ecececff;
+  border-color: #ececec;
   border-width: 5px;
   border-radius: 5px;
 }
@@ -29,9 +29,9 @@ body {
   margin: 10px;
   padding: 5px;
   border-style: solid;
-  border-color: #ca0000ff;
+  border-color: #ca0000;
   border-radius: 25px;
-  background-color: #ca0000ff;
+  background-color: #ca0000;
   transition: all 0.3s ease;
 }
 
@@ -40,18 +40,18 @@ body {
 }
 
 .item_header{
-  background-color: #ecececff;
+  background-color: #ececec;
   border-style: solid;
-  border-color: #ecececff;
+  border-color: #ececec;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
   font-size: 1.5em;
 }
 .item_body{
-  background-color: #ecececff;
+  background-color: #ececec;
   border-style: solid;
-  border-color: #ecececff;
+  border-color: #ececec;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
@@ -64,9 +64,9 @@ input[type=checkbox] {
   margin: 10px;
   padding: 3px;
   border-style: solid;
-  border-color: #ca0000ff;
+  border-color: #ca0000;
   border-radius: 25px;
-  background-color: #ca0000ff;
+  background-color: #ca0000;
 }
 
 #new_item {
@@ -85,7 +85,7 @@ input[type=checkbox] {
   margin: 0px;
   padding: 0px;
   border-style: solid;
-  border-color: #dfdfdfff;
+  border-color: #dfdfdf;
   border-radius: 10px;
 }
 
@@ -102,5 +102,5 @@ input[type=checkbox] {
   font-weight: bold
 }
 .exit_new_item{
-  background-color: #ca0000ff;
+  background-color: #ca0000;
 }

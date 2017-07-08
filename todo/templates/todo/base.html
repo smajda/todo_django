@@ -1,19 +1,14 @@
 {% load static %}
 
 <!DOCTYPE HTML>
-
-<html lang = "en">
-
 <head>
   <title>Todo App</title>
-  <meta charset = "utf-8">
   <meta name = "viewport" content = "width=device-width, initial-scale=1">
-  <meta http-equiv = "x-ua-compatible" content = "ie-edge">
 
   <!-- Bootstrap 4 CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-  <!-- Used for UI, such as date picker -->
+  <!-- Used for date picker -->
   <link rel="stylesheet" type="text/css" href="{% static 'todo/Pikaday-master/css/pikaday.css' %}" />
 
   <!-- custom static files -->
@@ -26,36 +21,35 @@
 
 <body class="body">
 
-    <div id="nav" class="sidenav">
-      <div class="nav_expand">
-        <a href="#">
-          <img src="{% static 'todo/nav/expand_arrow.png' %}" id = "nav_toggle" class="img-fluid">
-        </a>
-      </div>
-
-      <div class="nav_icon">
-        <img src="{% static 'todo/nav/add.png' %}" id = "add" class="img-fluid">
-      </div>
-      <div class="resbr"></div>
-
-      <div class="nav_icon">
-        <a href="https://github.com/noah-dev/todo_django">
-          <img src="{% static 'todo/nav/github.png' %}" id = "github" class="img-fluid">
-        </a>
-      </div>
-      <div class="resbr"></div>
-
-      <div class="nav_icon">
-        <a href="https://github.com/noah-dev">
-          <img src="{% static 'todo/nav/logo.png' %}" id = "logo" class="img-fluid">
-        </a>
-      </div>
+  <div id="nav" class="sidenav">
+    <div class="nav_expand">
+      <a href="#">
+        <img src="{% static 'todo/nav/expand_arrow.png' %}" id = "nav_toggle" class="img-fluid">
+      </a>
     </div>
 
-    <div id="content" >
-      {% block content %}
-      {% endblock %}
+    <div class="nav_icon">
+      <img src="{% static 'todo/nav/add.png' %}" id = "add" class="img-fluid">
     </div>
+    <div class="resbr"></div>
+
+    <div class="nav_icon">
+      <a href="https://github.com/noah-dev/todo_django">
+        <img src="{% static 'todo/nav/github.png' %}" id = "github" class="img-fluid">
+      </a>
+    </div>
+    <div class="resbr"></div>
+
+    <div class="nav_icon">
+      <a href="https://github.com/noah-dev">
+        <img src="{% static 'todo/nav/logo.png' %}" id = "logo" class="img-fluid">
+      </a>
+    </div>
+  </div>
+
+  <div id="content" >
+    {% block content %}
+    {% endblock %}
   </div>
 
   <!--JS files -->
@@ -68,9 +62,7 @@
 
   <script src="{% static 'todo/Pikaday-master/pikaday.js' %}"></script>
 
-  <script src="{% static 'todo/item.js' %}"></script>
-  <script src="{% static 'todo/date.js' %}"></script>
-  <script src="{% static 'todo/nav.js' %}"></script>
+  <script src="{% static 'todo/main.js' %}"></script>
 
 </body>
 
