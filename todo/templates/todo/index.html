@@ -38,7 +38,7 @@
       {% endif %}
       <div id = "todo_container">
         <div class="col-md-12" style="text-align: center; color: #ececec;">
-          <h1>Current Items</h1>
+          <h1>{{request.user.username}}'s Items</h1>
         </div>
         {% for item in item_list %}
         <div class="item" id = {{item.id}}>
