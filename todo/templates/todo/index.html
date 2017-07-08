@@ -37,7 +37,7 @@
         </div>
       {% endif %}
       <div id = "todo_container">
-        <div class="col-md-12" style="text-align: center; color: #ecececff;">
+        <div class="col-md-12" style="text-align: center; color: #ececec;">
           <h1>Current Items</h1>
         </div>
         {% for item in item_list %}
@@ -59,7 +59,7 @@
       </div>
 
       <div id = "todo_container">
-        <div class="col-md-12" style="text-align: center; color: #ecececff;">
+        <div class="col-md-12" style="text-align: center; color: #ececec;">
           <h1>Items Past Due Date</h1>
         </div>
         {% for item in past_items %}
@@ -86,7 +86,7 @@
   <div id="new_item" class="row">
     <br>
     <div class="col-md-8 offset-2">
-      <div id="new_item_container" class="container" style="background-color: #ecececff">
+      <div id="new_item_container" class="container" style="background-color: #ececec">
         <form action="/todo/add_item/" method="post" id = "item_form">
           {% csrf_token %}
           <h2>Note: Only date fields may be modified. (Concerned about malicious usage)</h2>
