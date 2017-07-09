@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 
 User = get_user_model()
 
+# Use django built in form code for user authentication
+
 class UserLoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput())
@@ -12,12 +14,9 @@ class UserLoginForm(forms.Form):
         password = self.cleaned_data.get("password")
         user = authenticate(username=username, password=password)
         if not user:
-            raise forms.ValidationError("This User Does Not Exist")
-
-        if not user.check_password(password):
-            raise forms.ValidationError("Incorrect Password")
-
+            raise forms.ValidationError("Either User Does Not Exist or Password Invalid")
         if not user.is_active:
             raise forms.ValidationError("User Is No Longer Active")
-
+            
+        # If the user authenciates, log them in. 
         return super(UserLoginForm, self).clean(*args, **kwargs)

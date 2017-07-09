@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib import messages
-from datetime import datetime
+from datetime import date, datetime, time
 
 @login_required(login_url='/login/')
 def index(request):
@@ -84,7 +84,12 @@ def add_item(request):
     '''Add a new item from a form via POST method'''
     def convert_date(date_string):
         '''Helper function to convert dates as strings to datetime objects'''
-        return datetime.strptime(date_string, '%m/%d/%Y')
+        day = datetime.strptime(date_string, '%m/%d/%Y')
+        # If date_string is 8/20/2017, then day will be datetime.datetime(2017, 6, 20, 0, 0)
+        # But the due date should not be at the start of the day - it should be the end
+        # So set it to datetime.datetime(2017, 6, 20, 23, 59, 59, 999999)
+        end_day = datetime.combine(day, time.max)
+        return end_day
 
     if 'add_button' in request.POST:
         # Is password correct?
