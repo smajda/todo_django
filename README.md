@@ -15,7 +15,6 @@ Although the business logic is pretty straight forward, I saw it as a great oppo
 Although at the outset I didn't know much of the above, I did know there were a ton of resources to help me in implementing the features & feel I wanted. Django, HTML/CSS/JS & jQuery all have big communities, enabling me to learn and build quicker. 
 
 # How does it work?
-**UML Diagram**
 In broad strokes, the three most key players are the user (the person), the front end (html/css/js) and the back end (django/postgres).
 
 ![UML](uml_diagram.png)
