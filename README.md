@@ -1,4 +1,4 @@
-# todo_django - http://todo-dj.herokuapp.com/todo/ 
+# todo_django - http://todo-dj.herokuapp.com/
 **Instructions:** https://github.com/noah-dev/todo_django/blob/master/instructions.png
 
 ![Demo](https://github.com/noah-dev/todo_django/blob/master/login/static/login/demo.gif)
@@ -9,13 +9,12 @@ My name is Noah - I'm an aspiring developer and this is one of my side projects.
 Although the business logic is pretty straight forward, I saw it as a great opportunity to learn front-end skills. This includes:
 * Building a responsive(-ish) site using Bootstrap.
 * Designing clean, stylish designs using CSS & Bootstrap
-* Using AJAX requests to update content on the page
+* Creating a user interface that enables users to select and display an item
 * Adding animations via CSS Transitions & jQuery code
 
 Although at the outset I didn't know much of the above, I did know there were a ton of resources to help me in implementing the features & feel I wanted. Django, HTML/CSS/JS & jQuery all have big communities, enabling me to learn and build quicker. 
 
 # How does it work?
-**UML Diagram**
 In broad strokes, the three most key players are the user (the person), the front end (html/css/js) and the back end (django/postgres).
 
 ![UML](uml_diagram.png)
@@ -28,7 +27,7 @@ Each user has their own list of items. In order to access the list, the user mus
 
 **2: Select An Item From The Right**
 
-As seen in the demo, the todo page is split into main sections (excluding the navbar). The left-hand side shows one item in detail while the right-hand side shows all items with fewer details. To change which item the left-hand side shows, the user clicks on an item from the right-hand side. An item will go pale upon hover over, and once clicked an AJAX request will fetch that item's details from postgres. Once retrived from postgres, the front end will update the DOM elements of the left-hand side to show the selected item. 
+As seen in the demo, the todo page is split into two main sections (excluding the navbar). The left-hand side shows one item in detail while the right-hand side shows all items with fewer details. To change which item the left-hand side shows, the user clicks on an item from the right-hand side. An item will go pale upon hover over, and once clicked an AJAX request will fetch that item's details from postgres. Once retrieved from postgres, the front end will update the DOM elements of the left-hand side to show the selected item. 
 
 **3: Toggle completion status of Item**
 
@@ -42,13 +41,15 @@ By clicking on the plus sign, the user may add a new item. Once complete and sub
 
 **1: I Met My Goals (And Then Some)**
 
-I knew I wanted to build a TODO app with great design. I used inkscape to create a mockup to establish not only the look and feel, but also imagine how the user might interact. The colol palette, three column design (navbar, left-side & right-side) were established. I imagined the entire list of items shown on the right-side, with the user selecting a item to to be displayed in detail on the left-side. The navbar on the left would be able to collapse/expand and would show links to add new items or go to the repo. 
+I knew I wanted to build a TODO app with great design. I used inkscape to create a mockup to establish not only the look and feel, but also imagine how the user might interact. The color palette, three column design (navbar, left-side & right-side) were established. I imagined the entire list of items shown on the right-side, with the user selecting a item to to be displayed in detail on the left-side. The navbar on the left would be able to collapse/expand and would show links to add new items or go to the repo. 
+
+![mockup](mockup.png)
 
 The end result looks a bit different, but in spirit it accomplishes everything the mockup envisioned. And then some. I did not intend to build a Login feature; but as I thought about how users experience, having the ability to login would make the app much better. If I shared this with multiple people, the list could become unrely and confusing. 
 
 Though it would increase the scope of the project, I did some research to estimate the cost. I found a series of step-by-step youtube videos that covered the feature, showing how to use Django's built-in login module. Instead of spending weeks working through official docs and trial and error, with these videos, I realized I could implement this quickly at minimal time cost. After 2 days, the feature was implemented and deployed.
 
-I am very satisfied with the end result. It takes a simple concept, and expands on it by adding slick design, nice user interface and a login page. I learned new tools, become proficient with them, and executed to create something I am proud of.
+I am very satisfied with the end result. It takes a simple concept, and expands on it by adding slick design, nice user interface and a login page. I learned new tools, became proficient with them, and executed to create something I am proud of.
 
 **2: jQuery, AJAX & Login**
 
@@ -60,7 +61,7 @@ As previously mentioned, having a login feature would improve the user experienc
 
 **3: I'm A Better Web Dev**
 
-Tying into the previous three, accomplishing a project like this has shown me a lot of new ways to solve challenges. Having gone through database managment, UI design, login authentication and deployment for a simple project like this gives me new appreciation for the many web applications that I rely on. The fact that I accomplished this feels me with determination to learn new things and move on to tackle new, bigger, better projects.
+Tying into the previous three, accomplishing a project like this has shown me a lot of new ways to solve challenges. Having gone through database managment, UI design, login authentication and deployment for a simple project like this gives me new appreciation for the many web applications that I rely on. The fact that I accomplished this feels me with the spirit to learn new things and move on to tackle new, bigger, better projects.
 
 # Resources & References
 **Other people's code**
@@ -85,4 +86,4 @@ Tying into the previous three, accomplishing a project like this has shown me a 
 
 # Appendix
 
-**WIP**
+**WIP: Will cover how the execution flows, including which files, which functions, the arguments and the returns**
