@@ -9,7 +9,7 @@ My name is Noah - I'm an aspiring developer and this is one of my side projects.
 Although the business logic is pretty straight forward, I saw it as a great opportunity to learn front-end skills. This includes:
 * Building a responsive(-ish) site using Bootstrap.
 * Designing clean, stylish designs using CSS & Bootstrap
-* Using AJAX requests to update content on the page
+* Creating a user interface that enables users to select and display an item
 * Adding animations via CSS Transitions & jQuery code
 
 Although at the outset I didn't know much of the above, I did know there were a ton of resources to help me in implementing the features & feel I wanted. Django, HTML/CSS/JS & jQuery all have big communities, enabling me to learn and build quicker. 
