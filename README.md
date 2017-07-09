@@ -1,4 +1,5 @@
 # todo_django - WIP README - NOW LIVE!: http://todo-dj.herokuapp.com/todo/ 
+**Instructions:** https://github.com/noah-dev/todo_django/blob/master/instructions.png
 ![Demo](https://github.com/noah-dev/todo_django/blob/master/login/static/login/demo.gif)
 # Intro:
 My name is Noah - I'm an aspiring developer and this is one of my side projects. This readme document will cover the why, how, and the what. **Why I built this, How I built this, and What I accomplished.**
