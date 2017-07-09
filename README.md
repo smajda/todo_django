@@ -1,4 +1,4 @@
-# todo_django - WIP README - NOW LIVE!: http://todo-dj.herokuapp.com/todo/ 
+# todo_django - http://todo-dj.herokuapp.com/todo/ 
 **Instructions:** https://github.com/noah-dev/todo_django/blob/master/instructions.png
 ![Demo](https://github.com/noah-dev/todo_django/blob/master/login/static/login/demo.gif)
 # Intro:
@@ -16,7 +16,7 @@ Although at the outset I didn't know much of the above, I did know there were a 
 # How does it work?
 **UML Diagram**
 In broad strokes, the three most key players are the user (the person), the front end (html/css/js) and the back end (django).
-![UML](uml.png)
+![UML](uml_diagram.png)
 
 As shown in the diagram, there are four ways a user can interact with the app. I will briefly cover how this looks; if you are interested in more granualarity, check the appendix. 
 
