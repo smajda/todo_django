@@ -62,7 +62,7 @@ As previously mentioned, having a login feature would improve the user experienc
 
 **3: I'm A Better Web Dev**
 
-Tying into the previous three, accomplishing a project like this has shown me a lot of new ways to solve challenges. Having gone through database managment, UI design, login authentication and deployment for a simple project like this gives me new appreciation for the many web applications that I rely on. The fact that I accomplished this feels me with determination to learn new things and move on to tackle new, bigger, better projects.
+Tying into the previous three, accomplishing a project like this has shown me a lot of new ways to solve challenges. Having gone through database managment, UI design, login authentication and deployment for a simple project like this gives me new appreciation for the many web applications that I rely on. The fact that I accomplished this feels me with the spirit to learn new things and move on to tackle new, bigger, better projects.
 
 # Resources & References
 **Other people's code**
