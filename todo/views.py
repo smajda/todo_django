@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import Item
 
@@ -13,24 +14,25 @@ from django.utils import timezone
 from django.contrib import messages
 from datetime import datetime
 
-
+@login_required(login_url='/login/')
 def index(request):
     '''index will populate the page with items from the database'''
-    template_name = 'todo/index.html'
-    context_object_name = 'item_list'
+    # I believe this is secure: https://stackoverflow.com/questions/15819937/django-auth-can-request-user-be-exploited-and-point-to-other-user
+    username = request.user
+
     # Split the items based on whether or not the due date has passed
     todo_items = Item.objects\
-        .filter(due_date__gte=timezone.now())\
+        .filter(username=username, due_date__gte=timezone.now())\
         .order_by('due_date')
     past_items = Item.objects\
-        .filter(due_date__lt=timezone.now())\
+        .filter(username=username, due_date__lt=timezone.now())\
         .order_by('due_date')
 
-    return render(request, template_name,
-                  {context_object_name: todo_items,
+    return render(request, 'todo/index.html',
+                  {'item_list': todo_items,
                    'past_items': past_items})
 
-
+@login_required(login_url='/login/')
 def complete_item(request):
     '''Update an item's complete status via an ajax request'''
     try:
@@ -53,7 +55,7 @@ def complete_item(request):
     # Return the JsonResponse - the returned dict is not used for anything
     return JsonResponse({'tmp': 'success'}, safe=False)
 
-
+@login_required(login_url='/login/')
 def show_item(request):
     '''Return a specific item using passed in primary key via ajax request'''
     try:
@@ -61,6 +63,10 @@ def show_item(request):
         item_select = get_object_or_404(Item, pk=item_id)
     except:
         print("Error at todo.view.ajax")
+
+    # To be honest, I don't know if this is necessary. But it makes me feel better
+    if item_select.username != str(request.user):
+        return redirect('/todo/')
 
     # To format the data correctly, model_to_dict is used
     pre_data = model_to_dict(item_select)
@@ -73,74 +79,7 @@ def show_item(request):
     data = json.dumps(pre_data)
     return JsonResponse(data, safe=False)
 
-
-def add_item_public(request):
-    desc_options = ["Complete work on next side project",
-                    "Get milk",
-                    "Finish documentation",
-                    "Learn New Language/Framework (Java, NodeJS, Scala, etc.)",
-                    "Finish the book"]
-    imp_options = ["Sharpen my skills and bolster the portfolio.",
-                   "I don't want to eat cereal with water. Get milk.",
-                   "Code can be better understood by others (and future me)",
-                   "Expand my capabiliities so I can build new things",
-                   "Gain a new perspective and grow as a person"]
-    '''Only the date fields may be modified'''
-    def convert_date(date_string):
-        '''Helper function to convert dates as strings to datetime objects'''
-        return datetime.strptime(date_string, '%m/%d/%Y')
-
-    if 'add_button' in request.POST:
-        if len(request.POST['start']) <= 10 or len(request.POST['due']) <= 10:
-            try:
-                option = random.randint(0, 4)
-                # Attempt to fill out a new item and save it to the database
-                title_text = 'Preset Example Title ' + str(option)
-                desc_text = desc_options[option]
-                impact_text = imp_options[option]
-                start_date = convert_date(request.POST['start'])
-                due_date = convert_date(request.POST['due'])
-                complete = False
-                priority = -1
-                add_date = timezone.now()
-
-                new_item = Item(title_text=title_text,
-                                desc_text=desc_text,
-                                impact_text=impact_text,
-                                start_date=start_date,
-                                due_date=due_date,
-                                priority=priority,
-                                complete=complete,
-                                add_date=add_date)
-                new_item.save()
-
-            except:
-                # If it didn't work, assume the provided data was invalid and
-                # request user try again.
-                messages.warning(request, "Input Not Valid - Please Try Again")
-                HttpResponseRedirect(request.path)
-        else:
-            # If it didn't work, assume the provided data was invalid and
-            # request user try again.
-            messages.warning(request, "Date Not Valid")
-            HttpResponseRedirect(request.path)
-
-    # Used instead of redirect so that back button goes back to todo page
-    return HttpResponseRedirect(reverse('todo:index'))
-
-
-def simple_auth(password):
-    '''Used in add_item to check if password is correct.'''
-    # It's pretty simple and crude. There has to be a better way to control
-    # who can add new items.
-
-    # Password is set by Heroku environment, and can be changed via dashboard
-    if password == os.environ.get('TODO_DJ_ADD_PASS'):
-        return True
-    else:
-        return False
-
-
+@login_required(login_url='/login/')
 def add_item(request):
     '''Add a new item from a form via POST method'''
     def convert_date(date_string):
@@ -149,38 +88,34 @@ def add_item(request):
 
     if 'add_button' in request.POST:
         # Is password correct?
-        if simple_auth(request.POST['password']):
-            try:
-                # Attempt to fill out a new item and save it to the database
-                title_text = request.POST['title']
-                desc_text = request.POST['desc']
-                impact_text = request.POST['impact']
-                start_date = convert_date(request.POST['start'])
-                due_date = convert_date(request.POST['due'])
-                complete = False
-                priority = -1
-                add_date = timezone.now()
+       
+        try:
+            # Attempt to fill out a new item and save it to the database
+            username = str(request.user)
+            title_text = request.POST['title']
+            desc_text = request.POST['desc']
+            impact_text = request.POST['impact']
+            start_date = convert_date(request.POST['start'])
+            due_date = convert_date(request.POST['due'])
+            complete = False
+            priority = -1
+            add_date = timezone.now()
 
-                new_item = Item(title_text=title_text,
-                                desc_text=desc_text,
-                                impact_text=impact_text,
-                                start_date=start_date,
-                                due_date=due_date,
-                                priority=priority,
-                                complete=complete,
-                                add_date=add_date)
-                new_item.save()
+            new_item = Item(username=username,
+                            title_text=title_text,
+                            desc_text=desc_text,
+                            impact_text=impact_text,
+                            start_date=start_date,
+                            due_date=due_date,
+                            priority=priority,
+                            complete=complete,
+                            add_date=add_date)
+            new_item.save()
 
-            except:
-                # If it didn't work, assume the provided data was invalid and
-                # request user try again.
-                messages.warning(request, "Input Not Valid - Please Try Again")
-                HttpResponseRedirect(request.path)
-        else:
-            # If the password does not match up, inform user that password is
-            # did not work.
-            messages.warning(request, "Password Did Not Work")
+        except:
+            # If it didn't work, assume the provided data was invalid and
+            # request user try again.
+            messages.warning(request, "Input Not Valid - Please Try Again")
             HttpResponseRedirect(request.path)
-
     # Used instead of redirect so that back button goes back to todo page
     return HttpResponseRedirect(reverse('todo:index'))

@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['todo-dj.herokuapp.com',
 # Application definition
 
 INSTALLED_APPS = [
+    'login.apps.LoginConfig',
     'todo.apps.TodoConfig',
     'django.contrib.admin',
     'django.contrib.auth',

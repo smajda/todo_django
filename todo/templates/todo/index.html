@@ -38,7 +38,7 @@
       {% endif %}
       <div id = "todo_container">
         <div class="col-md-12" style="text-align: center; color: #ececec;">
-          <h1>Current Items</h1>
+          <h1>{{request.user.username}}'s Items</h1>
         </div>
         {% for item in item_list %}
         <div class="item" id = {{item.id}}>
@@ -93,19 +93,19 @@
           <h2>Just select dates and press the green button. (Preset info filled in)</h2>
           <div class="form-group">
             <b>Title:</b>
-            <input type="text" class="form-control form-control-lg" name = "title" disabled="disabled"
+            <input type="text" class="form-control form-control-lg" name = "title" 
               placeholder = "Title of this task.">
           </div>
           <div class="row">
             <div class="form-group col-md-6">
               <b>Description:</b>
-              <textarea class="form-control form-control-lg" name = "desc" disabled="disabled" rows="3"
+              <textarea class="form-control form-control-lg" name = "desc" rows="3"
                 placeholder = "What nature of this task?"></textarea>
             </div>
 
             <div class="form-group col-md-6">
               <b>Impact:</b>
-              <textarea class="form-control form-control-lg" name = "impact" disabled="disabled" rows="3"
+              <textarea class="form-control form-control-lg" name = "impact"  rows="3"
                 placeholder = "What is the impact of completion/failure?"></textarea>
             </div>
           </div>

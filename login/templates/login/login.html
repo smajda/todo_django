@@ -1,0 +1,26 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-md-3 offset-1 col-sm-12">
+            <div class="login_form">
+                <h1>Login</h1>
+                <p>Please use account provided by author</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type = "submit" class="btn btn-success btn-lg" id="login" name = "login">Login!</button>
+                </form>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-7 col-sm-12">
+            <h1>Demo (Needs to be updated to recent ver.)</h1>
+            <img src="{% static 'login/demo.gif' %}" id = "demo" class="img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock %}

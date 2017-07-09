@@ -9,6 +9,6 @@ urlpatterns = [
 
     url(r'^$', views.index, name='index'),
     url(r'^show_item/$', views.show_item, name='show_item'),
-    url(r'^add_item/$', views.add_item_public, name='add_item_public'),
+    url(r'^add_item/$', views.add_item, name='add_item'),
     url(r'^complete_item/$', views.complete_item, name='complete_item'),
 ]

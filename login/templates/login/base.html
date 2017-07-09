@@ -20,41 +20,7 @@
 </head>
 
 <body class="body">
-
-  <div id="nav" class="sidenav">
-    <div class="nav_expand">
-      <a href="#">
-        <img src="{% static 'todo/nav/expand_arrow.png' %}" id = "nav_toggle" class="img-fluid">
-      </a>
-    </div>
-
-    <div class="nav_icon">
-      <a href="/login/logout/">
-        <img src="{% static 'todo/nav/logout.png' %}" id = "logout" class="img-fluid">
-      </a>
-    </div>
-    <div class="resbr"></div>
-
-    <div class="nav_icon">
-      <img src="{% static 'todo/nav/add.png' %}" id = "add" class="img-fluid">
-    </div>
-    <div class="resbr"></div>
-
-    <div class="nav_icon">
-      <a href="https://github.com/noah-dev/todo_django">
-        <img src="{% static 'todo/nav/github.png' %}" id = "github" class="img-fluid">
-      </a>
-    </div>
-    <div class="resbr"></div>
-
-    <div class="nav_icon">
-      <a href="https://github.com/noah-dev">
-        <img src="{% static 'todo/nav/logo.png' %}" id = "logo" class="img-fluid">
-      </a>
-    </div>
-  </div>
-
-  <div id="content" >
+  <div id="content_login" >
     {% block content %}
     {% endblock %}
   </div>
