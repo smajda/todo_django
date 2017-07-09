@@ -42,7 +42,9 @@ By clicking on the plus sign, the user may add a new item. Once complete and sub
 
 **1: I Met My Goals (And Then Some)**
 
-I knew I wanted to build a TODO app with great design. I used inkscape to create a mockup to establish not only the look and feel, but also imagine how the user might interact. The colol palette, three column design (navbar, left-side & right-side) were established. I imagined the entire list of items shown on the right-side, with the user selecting a item to to be displayed in detail on the left-side. The navbar on the left would be able to collapse/expand and would show links to add new items or go to the repo. https://github.com/noah-dev/todo_django/blob/master/mockup.png
+I knew I wanted to build a TODO app with great design. I used inkscape to create a mockup to establish not only the look and feel, but also imagine how the user might interact. The colol palette, three column design (navbar, left-side & right-side) were established. I imagined the entire list of items shown on the right-side, with the user selecting a item to to be displayed in detail on the left-side. The navbar on the left would be able to collapse/expand and would show links to add new items or go to the repo. 
+
+![mockup](mockup.png)
 
 The end result looks a bit different, but in spirit it accomplishes everything the mockup envisioned. And then some. I did not intend to build a Login feature; but as I thought about how users experience, having the ability to login would make the app much better. If I shared this with multiple people, the list could become unrely and confusing. 
 
