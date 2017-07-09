@@ -24,17 +24,22 @@ As shown in the diagram, there are four ways a user can interact with the app. I
 # Resources & References
 **Other people's code**
 * Date picker: https://github.com/dbushell/Pikaday
+
 **Tutorials which cover the basics of setting up Django**
 * Offical docs: https://docs.djangoproject.com/en/1.11/intro/tutorial01/
 * Excellent tutorial: https://tutorial.djangogirls.org/en/
+
 **Youtube tutorials**
 * User login/authentication: https://www.youtube.com/watch?v=BIgVhBBm6zI
+
 **Official Documentation**
 * Django: https://docs.djangoproject.com/en/1.11/
 * jQuery: https://api.jquery.com/
 * Bootstrap: https://v4-alpha.getbootstrap.com/getting-started/introduction/
+
 **Unofficial Documentation**
 * All around resource: https://www.w3schools.com/
+
 **Blogs, Stackoverflow, and other misc sites for specific issues**
 
 # Appendix
