@@ -17,7 +17,7 @@ Although at the outset I didn't know much of the above, I did know there were a 
 In broad strokes, the three most key players are the user (the person), the front end (html/css/js) and the back end (django).
 ![UML](uml.png)
 
-As shown in the diagram, there are four ways a user can interact with the app. I will breifly cover how this looks; if you are interested in more granualarity, check the appendix. 
+As shown in the diagram, there are four ways a user can interact with the app. I will briefly cover how this looks; if you are interested in more granualarity, check the appendix. 
 
 # What did I accomplish & learn?
 
