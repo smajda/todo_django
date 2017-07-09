@@ -87,4 +87,4 @@ Tying into the previous three, accomplishing a project like this has shown me a 
 
 # Appendix
 
-**WIP: Will how the code flow executes, including which files and which functions**
+**WIP: Will cover how the execution flows, including which files, which functions, the arguments and the returns**
