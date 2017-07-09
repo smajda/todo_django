@@ -1,4 +1,4 @@
-# todo_django - http://todo-dj.herokuapp.com/todo/ 
+# todo_django - http://todo-dj.herokuapp.com/
 **Instructions:** https://github.com/noah-dev/todo_django/blob/master/instructions.png
 
 ![Demo](https://github.com/noah-dev/todo_django/blob/master/login/static/login/demo.gif)
