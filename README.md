@@ -87,4 +87,4 @@ Tying into the previous three, accomplishing a project like this has shown me a 
 
 # Appendix
 
-**WIP**
+**WIP: Will how the code flow executes, including which files and which functions**
