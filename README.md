@@ -1,5 +1,6 @@
 # todo_django
 Simple Todo App (NOW LIVE!: http://todo-dj.herokuapp.com/todo/ )
+![Demo](https://github.com/noah-dev/todo_django/blob/master/login/static/login/demo.gif)
 
 # Intro:
 My name is Noah - I'm an aspiring developer and this is one of my side projects. This readme document will cover why I built this, how I built this, and what I accomplished & learned. 
@@ -18,7 +19,7 @@ Although the business logic is pretty straight forward, I saw it as a great oppo
 Although at the outset I didn't know much of the above, I did know there were a ton of resources to help me in implementing the features & feel I wanted. Django, HTML/CSS/JS & jQuery all have big communities, enabling me to learn and build quicker. 
 
 # How does it work?
-The project can be broadly divided into two categories: Front-end and Back-end. Lets start with the simpler one:
+![UML](uml.png)
 #### Back-end
 The Back-end code is nothing too special. If you are familair with Django apps, then this section will cover nothing new.  
 
@@ -33,20 +34,5 @@ HTML files are held the templates folder. Django has templating capabilities and
 Static files, such as CSS, JS, Libraries and Images, are stored in the static folder. During deployment, this is collected into a single location with static assets for other applications (such as admin-panel)
 
 #### Front-end
-
-Back-end				Front-end
-	|	<- Get main page	|
-	|	All records ->		|	
-	|						|
-	|	<- Show an item		|
-	|	Return a an item -> |
-	|						|
-	|	<- Complete an item |
-	|	Update Database ->	|
-	|	Change status 		|
-	|						|
-	|	<- Submit form 		|
-	|	Update Database ->	|
-
 
 # What did I accomplish & learn?
