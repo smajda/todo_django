@@ -4,6 +4,7 @@ from django.db import models
 class Item(models.Model):
     '''Represents an item on a todo list, such as user, desc, etc.
     '''
+    username = models.CharField(max_length=200)
     title_text = models.CharField(max_length=200)
     desc_text = models.TextField()
     impact_text = models.TextField()
