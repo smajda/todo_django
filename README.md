@@ -89,4 +89,40 @@ Tying into the previous three, accomplishing a project like this has shown me a 
 
 # Appendix
 
-**WIP: Will cover how the execution flows, including which files, which functions, the arguments and the returns**
+**Note:** In Django, routing is handled by the urls.py files. This appendix shall exclude those files, but they are responsible for matching up a url with the appropriate function in the appropriate views.py file. There are three urls.py files, located within /todo_dj, /login, and /todo
+
+There is a function within views.py called login_view. That views.py sits within the login folder, and the login folder sits in the root. This will be equivalent to login.views.login_view. Static files (such as CSS/JS) are collected into a single folder during deployment, but during development the static files sit in their appropriate folders. 
+
+**1: Login**
+* User Submits Credentials 
+* Route to login.views.login_view
+* Using Django functions, clean and validate the data. If valid, redirect to todo page. 
+* There are additional cases if the user is already logged in, credentials are invalid or if credentials not yet submitted.
+* If user is already logged in, redirect to todo page. If credentials are invalid raise an error. If credentials not yet submitted, render HTML template login.templates.login.login.html
+
+**2: Select An Item From The Right**
+* User hovers over an item - CSS will set opacity to 50%. (Style file at todo.static.todo.style.css)
+* User clicks on item 
+* Triggers jQuery function at todo.static.todo.main.$(".item").click
+* When the todo page is served by Django, each item's DOM id is equal to the primary key in postgres. Using this id, create an AJAX request to retrive the record from postgres
+* Route to todo.views.show_item
+* Retrive the id from the AJAX request and find the record in postgres.
+* Convert the dates to Central Timezone, convert to JSON and return as a JsonResponse
+* Back in todo.static.todo.main.$(".item").click, parse the returned Json and fill out the DOM elements in the left-side. 
+
+**3: Toggle completion status of Item**
+* User clicks on the checkbox for the item in the left-side.
+* Triggers jQuery function at $('input[name="item_complete"]').on
+* Retrive the checkbox's id and its status (checked or unchecked). The checkbox's id is the item's primary key in postgres. 
+* Send an AJAX request with the item's id (primary key) and if its completion is True/False.
+* Route to todo.views.complete_item
+* Retrive the item from postgres and set the complete field to the appropriate value. 
+* Return an response (no useful data)
+* Back in $('input[name="item_complete"]').on, update the DOM elements in the left-side and right-side to indicate the database has been updated. 
+
+**4: Add New Item**
+* User clicks on the plus icon, fills out the form and submits.
+* Routes to todo.views.add_item
+* Retrive the info from the POST form, including the item's title, desc, due date and other fields. 
+* Start date and Due date are set to end of day. (From 8/1/2017 to 8/1/2017, 23:59:59:999999)
+* The record is saved and reverse redirect to todo page. 
