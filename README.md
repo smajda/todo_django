@@ -96,7 +96,9 @@ There is a function within views.py called login_view. That views.py sits within
 **1: Login**
 * User Submits Credentials 
 * Route to login.views.login_view
-* Using Django functions, clean and validate the data. If valid, redirect to todo page. 
+* Using Django functions, clean and validate the data. If valid, redirect to todo page
+* Routes to todo.views.index
+* Retrive the appropriate records from Postgres and render HTML template todo.templates.todo.index.html
 * There are additional cases if the user is already logged in, credentials are invalid or if credentials not yet submitted.
 * If user is already logged in, redirect to todo page. If credentials are invalid raise an error. If credentials not yet submitted, render HTML template login.templates.login.login.html
 
@@ -125,4 +127,6 @@ There is a function within views.py called login_view. That views.py sits within
 * Routes to todo.views.add_item
 * Retrieve the info from the POST form, including the item's title, desc, due date and other fields. 
 * Start date and Due date are set to end of day. (From 8/1/2017 to 8/1/2017, 23:59:59:999999)
-* The record is saved and reverse redirect to todo page. 
+* The record is saved and reverse redirect to todo page.
+* Routes to todo.views.index
+* Retrive the appropriate records from Postgres and render HTML template todo.templates.todo.index.html
