@@ -13,6 +13,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib import messages
 from datetime import date, datetime, time
+import pytz
+
 
 @login_required(login_url='/login/')
 def index(request):
@@ -71,9 +73,10 @@ def show_item(request):
     # To format the data correctly, model_to_dict is used
     pre_data = model_to_dict(item_select)
     # Convert the date fields from datetime objects to strings
-    pre_data['add_date'] = str(pre_data['add_date'])
-    pre_data['due_date'] = str(pre_data['due_date'])
-    pre_data['start_date'] = str(pre_data['start_date'])
+    tz = pytz.timezone('America/Chicago')
+    pre_data['add_date'] = str(pre_data['add_date'].astimezone(tz))
+    pre_data['due_date'] = str(pre_data['due_date'].astimezone(tz))
+    pre_data['start_date'] = str(pre_data['start_date'].astimezone(tz))
 
     # Dump data and return it
     data = json.dumps(pre_data)
@@ -88,7 +91,9 @@ def add_item(request):
         # If date_string is 8/20/2017, then day will be datetime.datetime(2017, 6, 20, 0, 0)
         # But the due date should not be at the start of the day - it should be the end
         # So set it to datetime.datetime(2017, 6, 20, 23, 59, 59, 999999)
-        end_day = datetime.combine(day, time.max)
+        tz = pytz.timezone('America/Chicago')
+        end_day = tz.localize(day).replace(hour=23, minute=59, second=59, microsecond=999999)
+        print(end_day)
         return end_day
 
     if 'add_button' in request.POST:
