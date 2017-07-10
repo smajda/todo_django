@@ -44,13 +44,13 @@ By clicking on the plus sign, the user may add a new item. Once complete and sub
 
 **1: I Met My Goals (And Then Some)**
 
-I knew I wanted to build a TODO app with great design. I used Inkscape to create a mockup to establish not only the look and feel, but also imagine how the user might interact. The color palette, three column design (navbar, left-side & right-side) were established. I imagined the entire list of items shown on the right-side, with the user selecting an item to be displayed in detail on the left-side. The navbar on the left would be able to collapse/expand and would show links to add new items or go to the repo. The Inkscape mockup is shown below. 
+I knew I wanted to build a TODO app with great design. I used Inkscape to create a mock-up to establish not only the look and feel, but also imagine how the user might interact. The color palette, three column design (navbar, left-side & right-side) were established. I imagined the entire list of items shown on the right-side, with the user selecting an item to be displayed in detail on the left-side. The navbar on the left would be able to collapse/expand and would show links to add new items or go to the repo. The Inkscape mock-up is shown below. 
 
 ![mockup](mockup.png)
 
-The result looks a bit different, but in the spirit it accomplishes everything the mockup envisioned. And then some. I did not intend to build a Login feature; but as I thought about user experience, having the ability to login would make the app much better. If I shared the app with multiple people, the list could become unruly and confusing. 
+The result looks a bit different, but in the spirit it accomplishes everything the mock-up envisioned. And then some. I did not intend to build a Login feature; but as I thought about user experience, having the ability to login would make the app much better. If I shared the app with multiple people, the list could become unruly and confusing. 
 
-Though it would increase the scope of the project, I did some research to estimate the cost. I found a series of step-by-step youtube videos that covered the feature, showing how to use Django's built-in user authentication module. Instead of spending weeks working through official docs and trial and error, with these videos, I realized I could implement this quickly at minimal time cost. After 2 days, the feature was implemented and deployed.
+Though it would increase the scope of the project, I did some research to estimate the cost. I found a series of step-by-step Youtube videos that covered the feature, showing how to use Django's built-in user authentication module. Instead of spending weeks working through official docs and trial and error, with these videos, I realized I could implement this quickly at minimal time cost. After 2 days, the feature was implemented and deployed.
 
 I am very satisfied with the end result. It takes a simple concept, and expands on it by adding slick design, nice user interface, and a login page. I learned new tools, became proficient with them, and executed to create something I am proud of.
 
@@ -60,7 +60,7 @@ At first, I didn't know jQuery. I had only used it for Bootstrap. A key part of 
 
 To show the selected item on the left-side, I planned on Django serving new HTML files. That would require a page refresh, and wondered if there was a better way. Google searching led me to AJAX requests. After some learning, trying and failing, I implemented a basic AJAX request to retrieve the appropriate record from Postgres. I then learned to use jQuery to populate the text of DOM elements. AJAX requests are also used in updating the completion status of an item. 
 
-As previously mentioned, having a login feature would improve the user experience. This was the first time I ever implemented such a feature, and I was grateful for the great Django community. The series of youtube videos were super helpful; it taught me enough to implement a login page. From there I added a new field to the database for username, so that the right items could be shown to the right users. The code was updated to account for the username field and now require user login. Once complete, the end result worked as I had hoped. 
+As previously mentioned, having a login feature would improve the user experience. This was the first time I ever implemented such a feature, and I was grateful for the great Django community. The series of Youtube videos were super helpful; it taught me enough to implement a login page. From there I added a new field to the database for username, so that the right items could be shown to the right users. The code was updated to account for the username field and now require user login. Once complete, the end result worked as I had hoped. 
 
 **3: I'm A Better Web Dev**
 
@@ -91,7 +91,7 @@ Tying into the previous three, accomplishing a project like this has shown me a 
 
 **Note:** In Django, routing is handled by the urls.py files. This appendix shall exclude those files, but they are responsible for matching up a url with the appropriate function in the appropriate views.py file. There are three urls.py files, located within /todo_dj, /login, and /todo
 
-There is a function within views.py called login_view. That views.py sits within the login folder, and the login folder sits in the root. This will be equivalent to login.views.login_view. Static files (such as CSS/JS) are collected into a single folder during deployment, but during development, the static files sit in their appropriate folders. 
+There is a function within views.py called login_view. That views.py sits within the login folder, and the login folder sits in the root. This will be equivalent to login.views.login_view. Static files (such as CSS/JS) are collected into a single folder during deployment; but during development, the static files sit in their appropriate folders. 
 
 **1: Login**
 * User Submits Credentials 
