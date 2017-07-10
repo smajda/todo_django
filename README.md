@@ -13,7 +13,7 @@ Although the concept is pretty straightforward, I saw it as an opportunity to ch
 * Creating a user interface that enables users to select and display an item
 * Adding animations via CSS Transitions & jQuery code
 
-Initially back-end work was on the back-burner, but later I chose to implement accounts and login. (see "What did I accomplish & learn?")
+Initially back-end work was on the back-burner, but later I chose to implement accounts and login. (see "[What did I accomplish & learn?](https://github.com/noah-dev/todo_django/blob/master/README.md#what-did-i-accomplish--learn)")
 
 Although at the outset I didn't know much of the above, I did know there were a ton of resources to help me in implementing the features & feel I wanted. Django, HTML/CSS/JS & jQuery all have big communities, enabling me to learn and build quicker. 
 
