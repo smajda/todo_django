@@ -30,15 +30,15 @@ Each user has their own list of items. In order to access the list, the user mus
 
 **2: Select An Item From The Right**
 
-As seen in the demo, the todo page is split into two main sections (excluding the navbar). The left-hand side shows one item in detail while the right-hand side shows all items with fewer details. To change which item the left-hand side shows, the user clicks on an item from the right-hand side. An item will go pale upon hover over, and once clicked an AJAX request will fetch that item's details from Postgres. Once retrieved from Postgres, the front end will update the DOM elements of the left-hand side to show the selected item. 
+As seen in the demo, the todo page is split into two main sections (excluding the navbar). Let's call them left-side and right-side. The left-side shows one item in detail while the right-side shows all items with fewer details. To change which item the left-side shows, the user clicks on an item from the right-side. An item will go pale upon hover over, and once clicked an AJAX request will fetch that item's details from Postgres. Once retrieved from Postgres, the front end will update the DOM elements of the left-side to show the selected item's details.
 
 **3: Toggle completion status of Item**
 
-On the left-hand side, (excluding the navbar) the item's details are shown. At the bottom is a checkbox to indicate whether or not an item is complete. If the item is complete, the checkbox will already be checked. If the user clicks on the checkbox and toggles the state, an AJAX request is sent to Django. Django will update the appropriate record in Postgres and return. From there the front end will update the DOM elements of both the left-hand side (for the checkbox) and the right-hand side (for the completion status)
+On the left-side, the item's details are shown. At the bottom is a checkbox to indicate whether or not the item is complete. If the item is complete, the checkbox will already be checked. If the user clicks on the checkbox and toggles the state, an AJAX request is sent to Django. Django will update the appropriate record in Postgres and return. From there, the front end will update the DOM elements of both the left-side (for the checkbox) and the right-side (for the completion status)
 
 **4: Add New Item**
 
-By clicking on the plus sign, the user may add a new item. Once complete and submitted, Django will receive the POST request and add a new record to Postgres. Once complete, Django will provide a new HTML page to the front end. This new HTML page will contain the newly added item and will be visible to the user. 
+By clicking on the plus sign, the user may add a new item. Once complete and submitted, Django will receive the POST request and add a new record to Postgres. Django will then provide a new HTML page to the front end. This new HTML page will contain the newly added item and will be visible to the user. 
 
 # What did I accomplish & learn?
 
