@@ -50,7 +50,7 @@ I knew I wanted to build a TODO app with great design. I used Inkscape to create
 
 The end result looks a bit different, but in spirit it accomplishes everything the mockup envisioned. And then some. I did not intend to build a Login feature; but as I thought about user experience, having the ability to login would make the app much better. If I shared the app with multiple people, the list could become unrely and confusing. 
 
-Though it would increase the scope of the project, I did some research to estimate the cost. I found a series of step-by-step youtube videos that covered the feature, showing how to use Django's built-in login module. Instead of spending weeks working through official docs and trial and error, with these videos, I realized I could implement this quickly at minimal time cost. After 2 days, the feature was implemented and deployed.
+Though it would increase the scope of the project, I did some research to estimate the cost. I found a series of step-by-step youtube videos that covered the feature, showing how to use Django's built-in user authentication module. Instead of spending weeks working through official docs and trial and error, with these videos, I realized I could implement this quickly at minimal time cost. After 2 days, the feature was implemented and deployed.
 
 I am very satisfied with the end result. It takes a simple concept, and expands on it by adding slick design, nice user interface and a login page. I learned new tools, became proficient with them, and executed to create something I am proud of.
 
@@ -64,7 +64,7 @@ As previously mentioned, having a login feature would improve the user experienc
 
 **3: I'm A Better Web Dev**
 
-Tying into the previous three, accomplishing a project like this has shown me a lot of new ways to solve challenges. Having gone through managing a database, UI design, login authentication and deployment for a this small project gives me new appreciation for the many web applications that I rely on. The fact that I accomplished this feels me with the spirit to learn new things and move on to tackle new, bigger, better projects.
+Tying into the previous three, accomplishing a project like this has shown me a lot of new ways to solve challenges. Having gone through managing a database, UI design, login authentication and deployment for this small project gives me new appreciation for the many web applications that I rely on. The fact that I accomplished this feels me with the spirit to learn new things and move on to tackle new, bigger, better projects.
 
 # Resources & References
 **Other people's code**
