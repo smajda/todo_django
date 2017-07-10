@@ -97,8 +97,6 @@ def add_item(request):
         return end_day
 
     if 'add_button' in request.POST:
-        # Is password correct?
-       
         try:
             # Attempt to fill out a new item and save it to the database
             username = str(request.user)
