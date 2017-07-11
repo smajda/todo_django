@@ -25,7 +25,7 @@ body {
   border-radius: 5px;
 }
 
-#todo_item{
+.todo_item{
   margin: 10px;
   padding: 5px;
   border-style: solid;

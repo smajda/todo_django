@@ -1,20 +1,38 @@
 //On document load, populate the left-hand side with the first item from
 //the right-hand side.
 $(function() {
-  //item_id is equivalent to the item's pk in the database.
-  item_id = $( ".item:first" ).get(0).id
-  item_ajax(item_id)
+  get_item();
 });
+
+function get_item(){
+  //Get the first item from the list. If no item exists, display an empty form.
+
+  //item_id is equivalent to the item's pk in the database.
+  if ( $( ".item" ).length ) {
+    item_id = $( ".item:first" ).get(0).id
+    item_ajax(item_id)
+  } else {
+    //If no item, then empty out left-side
+    $("#json_title_text").text("Empty List");
+    $("#json_desc_text").text('Please Add An Item');
+    $("#json_impact_text").text('');
+    $("#json_due_date").text('');
+    $("#json_start_date").text('');
+    $("#json_add_date").text('');
+    $('input[name="item_complete"]').prop('checked', false);
+    $(".todo_item").removeAttr('id');
+  }
+}
 
 //Retrive an item from the right-hand side list based on item_id
 //item_id is equivalent to items'pk in the database.
 function item_ajax(item_id) {
-  //Animation. #todo_item holds the elements that display the item's information
+  //Animation. .todo_item holds the elements that display the item's information
   //Begin with a fade to 0 opacity (disappear), wait a bit and then
   //reappear with fade to 1 opacity
-  $("#todo_item").fadeTo(400, 0, function() {
-    $("#todo_item").delay(400);
-    $("#todo_item").fadeTo(400, 1);
+  $(".todo_item").fadeTo(400, 0, function() {
+    $(".todo_item").delay(400);
+    $(".todo_item").fadeTo(400, 1);
   })
 
   //In order to give time for the animation, delay the ajax request by 600 ms
@@ -27,7 +45,7 @@ function item_ajax(item_id) {
       },
       dataType: 'json',
 
-      //When it returns, populate the fields in #todo_item
+      //When it returns, populate the fields in .todo_item
       success: function (data) {
         //Parse the data as JSON and begin assigning attributes to the elements
         data = JSON.parse(data);
@@ -52,9 +70,9 @@ function item_ajax(item_id) {
         } else {
           alert("ERROR WITH CHECKBOX")
         }
-        //Assign an pk to the checkbox this is used when the user clicks the
+        //Assign an pk to todo_item. This is used when the user clicks the
         //checkbox and the record in the database needs to be updated.
-        checkbox.attr('id', item_id);
+        $(".todo_item").attr('id', item_id);
       }
     });
   }, 600);
@@ -78,10 +96,11 @@ $(".item").click(function () {
 //Two things are accomplished: 1) The database is updated
 //2) The item's complete status on the right-hand side is updated
 $('input[name="item_complete"]').on('change', function () {
+  //Get it's item_id, equivalent to item's pk in database
+  var item_id = $(".todo_item").get(0).id;
+
   //Retrive the checkbox element
   var checkbox = $('input[name="item_complete"]')
-  //Get it's item_id, equivalent to item's pk in database
-  var item_id = checkbox.get(0).id;
   var complete = checkbox.is(':checked');
 
   //Setup the ajax request and send it off - handled by urls.py
@@ -163,9 +182,7 @@ $('#del_confirm_button').click(function (){
   //After the user has clicked the delete button, wait for the confirmation before deleting.
 
   //Get it's item_id, equivalent to item's pk in database
-  //See code for checkbox to understand how the item's pk is stored on checkbox
-  var item_id = $('input[name="item_complete"]').get(0).id;
-  console.log(item_id);
+  var item_id = $(".todo_item").get(0).id;
 
   //Setup the ajax request and send it off - handled by urls.py
   $.ajax({
@@ -178,8 +195,9 @@ $('#del_confirm_button').click(function (){
     //Upon completion, remove the item from the right-side and reload left-side
     success: function (data) {
       $("#"+item_id+".item").remove();
-      item_id = $( ".item:first" ).get(0).id
-      item_ajax(item_id)
+
+      get_item();
+
       reset_delete_buttons();
     }
   });
