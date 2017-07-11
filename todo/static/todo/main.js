@@ -120,6 +120,72 @@ $('input[name="item_complete"]').on('change', function () {
 
 });
 
+var countdown
+//
+$('#delete_button').click(function (){
+  //Reveal confirmation button and show 
+  var delete_button = $('#delete_button');
+  var del_confirm_button = $('#del_confirm_button');
+  delete_button.attr('disabled','disabled');
+
+  //Set timeout for how long before confirm button disappers
+  var timeout = 5; 
+  delete_button.text(timeout);
+  countdown = setInterval(function(){
+    timeout = timeout-1; 
+    delete_button.text(timeout)
+  },1000);
+
+  del_confirm_button.css('visibility','visible')
+  del_confirm_button.css('opacity','1')
+
+  //If the confirm button is not pressed, renable delete button
+  setTimeout(function(){
+    reset_delete_buttons();
+  }, timeout*1000);
+});
+
+function reset_delete_buttons(){
+  //Called to reset the buttons (both delete & confirm) if either timeout or item is deleted. 
+  clearInterval(countdown);
+  var delete_button = $('#delete_button');
+  var del_confirm_button = $('#del_confirm_button');
+  delete_button.text('Delete Item')
+  delete_button.removeAttr('disabled')
+  //visibility disables the button's functionality
+  //opacity enables transitions. Without visiblity set to hidden, button could still be pressed
+  del_confirm_button.css('visibility','hidden')
+  del_confirm_button.css('opacity','0')
+}
+
+
+$('#del_confirm_button').click(function (){
+  //After the user has clicked the delete button, wait for the confirmation before deleting.
+
+  //Get it's item_id, equivalent to item's pk in database
+  //See code for checkbox to understand how the item's pk is stored on checkbox
+  var item_id = $('input[name="item_complete"]').get(0).id;
+  console.log(item_id);
+
+  //Setup the ajax request and send it off - handled by urls.py
+  $.ajax({
+    url: 'delete_item/',
+    data: {
+      'id': item_id,
+    },
+    dataType: 'json',
+
+    //Upon completion, remove the item from the right-side and reload left-side
+    success: function (data) {
+      $("#"+item_id+".item").remove();
+      item_id = $( ".item:first" ).get(0).id
+      item_ajax(item_id)
+      reset_delete_buttons();
+    }
+  });
+
+});
+
 //Show/hide overlay form for new items
 $("#add").click(function (){
   $("#new_item").css('display', 'block');

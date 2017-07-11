@@ -60,6 +60,16 @@ input[type=checkbox] {
   transform: scale(1.5);
 }
 
+#delete_button{
+  width:150px;
+}
+
+#del_confirm_button{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out 1s ease-in-out;
+}
+
 #todo_container{
   margin: 10px;
   padding: 3px;
