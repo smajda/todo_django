@@ -38,14 +38,14 @@
         <div class="row">
           {% for message in messages %}
           <br>
-          <div class="col-md-12" style="text-align: center; color: red;">
+          <div class="error col-md-12">
             <h1>{{ message }}</h1>
             {% endfor %}
           </div>
         </div>
       {% endif %}
       <div id = "todo_container">
-        <div class="col-md-12" style="text-align: center; color: #ececec;">
+        <div class="list_title col-md-12">
           <h1>{{request.user.username}}'s Items</h1>
         </div>
         {% for item in item_list %}
@@ -56,9 +56,9 @@
 
             <h4><div class="complete_info" id = {{item.id}}>
               {% if item.complete %}
-                <b>Complete:</b> <span id ="complete_status" style='color: green'>{{item.complete}}</span>
+                <b>Complete:</b> <span id ="complete_status" class="complete_yes" >{{item.complete}}</span>
               {% else %}
-                <b>Complete:</b> <span id ="complete_status" style='color: red'>{{item.complete}}</span>
+                <b>Complete:</b> <span id ="complete_status" class="complete_no" >{{item.complete}}</span>
               {% endif %}
             </div></h4>
           </div>
@@ -67,7 +67,7 @@
       </div>
 
       <div id = "todo_container">
-        <div class="col-md-12" style="text-align: center; color: #ececec;">
+        <div class="list_title col-md-12">
           <h1>Items Past Due Date</h1>
         </div>
         {% for item in past_items %}
@@ -78,9 +78,9 @@
 
             <h4><div class="complete_info" id = {{item.id}}>
               {% if item.complete %}
-                <b>Complete:</b> <span style='color: green'>{{item.complete}}</span>
+                <b>Complete:</b> <span id ="complete_status" class="complete_yes" >{{item.complete}}</span>
               {% else %}
-                <b>Complete:</b> <span style='color: red'>{{item.complete}}</span>
+                <b>Complete:</b> <span id ="complete_status" class="complete_no" >{{item.complete}}</span>
               {% endif %}
             </div></h4>
           </div>
@@ -94,7 +94,7 @@
   <div id="new_item" class="row">
     <br>
     <div class="col-md-8 offset-2">
-      <div id="new_item_container" class="container" style="background-color: #ececec">
+      <div id="new_item_container" class="container">
         <form action="/todo/add_item/" method="post" id = "item_form">
           {% csrf_token %}
           <div class="form-group">

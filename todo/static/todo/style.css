@@ -79,6 +79,22 @@ input[type=checkbox] {
   background-color: #ca0000;
 }
 
+.list_title{
+  text-align: center; 
+  color: #ececec;
+}
+.error{
+  text-align: center; 
+  color: red;
+}
+
+.complete_yes{
+  color: green;
+}
+
+.complete_no{
+  color: red;
+}
 #new_item {
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
@@ -92,6 +108,7 @@ input[type=checkbox] {
 }
 
 #new_item_container{
+  background-color: #ececec;
   margin: 0px;
   padding: 0px;
   border-style: solid;
