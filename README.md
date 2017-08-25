@@ -130,3 +130,4 @@ There is a function within views.py called login_view. That views.py sits within
 * The record is saved and reverse redirect to todo page.
 * Routes to todo.views.index
 * Retrieve the appropriate records from Postgres and render HTML template todo.templates.todo.index.html
+
